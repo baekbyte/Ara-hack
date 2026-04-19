@@ -31,6 +31,7 @@ except ImportError:  # pragma: no cover
             self.kwargs = kwargs
 
 
+import sys, os; sys.path.insert(0, os.path.dirname(__file__))
 from prompts import MEMORY_PALACE_SYSTEM_INSTRUCTIONS
 
 

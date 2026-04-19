@@ -104,7 +104,6 @@ html, body, #root {
   border-radius: 50%;
   background: var(--green);
   box-shadow: 0 0 6px var(--green);
-  animation: pulse 2s ease-in-out infinite;
 }
 
 .status-dot.error {

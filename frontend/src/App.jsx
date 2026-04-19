@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Graph, { EDGE_CONFIG } from './components/Graph.jsx';
 import NodeDetail from './components/NodeDetail.jsx';
-import { DUMMY_DATA } from './dummyData.js';
 
 const POLL_INTERVAL = 2000;
 
 export default function App() {
-  const [graphData, setGraphData] = useState(DUMMY_DATA);
+  const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
   const [selectedNode, setSelectedNode] = useState(null);
   const [highlightIds, setHighlightIds] = useState(new Set());
   const [searchQuery, setSearchQuery] = useState('');
@@ -25,24 +24,14 @@ export default function App() {
         const data = await res.json();
         if (!cancelled) {
           setGraphData(prev => {
-            // Merge real nodes with dummy nodes — real data wins on ID collision.
-            // Only trigger a re-render when the graph actually changes.
-            const realNodes = data.nodes ?? [];
-            const realEdges = data.edges ?? data.links ?? [];
-            const realIds   = new Set(realNodes.map(n => n.id));
-            const dummyNodes = DUMMY_DATA.nodes.filter(n => !realIds.has(n.id));
-            const dummyEdges = DUMMY_DATA.edges.filter(e =>
-              !realIds.has(e.source) && !realIds.has(e.target)
-            );
-            const mergedNodes = [...realNodes, ...dummyNodes];
-            const mergedEdges = [...realEdges, ...dummyEdges];
-
+            const newNodes = data.nodes ?? [];
+            const newEdges = data.edges ?? data.links ?? [];
             const prevIds     = new Set(prev.nodes?.map(n => n.id) ?? []);
             const prevEdgeLen = (prev.edges ?? prev.links ?? []).length;
-            const same = mergedNodes.length === prevIds.size &&
-                         mergedEdges.length === prevEdgeLen &&
-                         mergedNodes.every(n => prevIds.has(n.id));
-            return same ? prev : { nodes: mergedNodes, edges: mergedEdges };
+            const same = newNodes.length === prevIds.size &&
+                         newEdges.length === prevEdgeLen &&
+                         newNodes.every(n => prevIds.has(n.id));
+            return same ? prev : { nodes: newNodes, edges: newEdges };
           });
           setStatus('live');
         }

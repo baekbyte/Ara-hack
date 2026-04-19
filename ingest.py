@@ -359,17 +359,22 @@ def _infer_ara_node_type(action_type: str) -> str:
     return "ara_tool_call"
 
 
+_SKIP_PATTERNS = {"heartbeat", "keepalive", "keep-alive", "ping", "health_check"}
+
 def ingest_ara_event(event: dict[str, Any]) -> MemoryNode:
     """Create an Ara event node and connect it to related memory."""
     action_type = str(event.get("action_type") or event.get("event_type") or "ara_event")
     content = str(event.get("content") or "").strip()
+
+    if content.lower().strip("_- ") in _SKIP_PATTERNS or action_type.lower() in _SKIP_PATTERNS:
+        raise ValueError(f"Skipping heartbeat/keepalive event: {action_type!r}")
     metadata = dict(event.get("metadata") or {})
     summary = content or metadata.get("output_summary") or action_type
     if metadata.get("tool_name") and not content:
         summary = f"{metadata['tool_name']}: {metadata.get('output_summary', '')}".strip(": ")
 
     node = MemoryNode(
-        id=_node_id("ara", str(event.get("id") or None)),
+        id=_node_id("ara", event.get("id") or None),
         content=summary,
         embedding=embed(summary),
         node_type=_infer_ara_node_type(action_type),

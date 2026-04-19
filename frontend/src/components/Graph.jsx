@@ -179,10 +179,9 @@ export default function Graph({ data, highlightIds, selectedNode, onNodeClick })
         controls.autoRotate = true;
       }
 
-      // Breathing: only the glow layer pulses, core stays crisp
+      // Update glow scale for highlight/selection changes
       nodeMapRef.current.forEach(info => {
-        const breathe = 1 + 0.14 * Math.sin(t * 1.15 + info.breathPhase);
-        const s = info.baseGlowScale * breathe * (info.scaleMult ?? 1);
+        const s = info.baseGlowScale * (info.scaleMult ?? 1);
         info.glow.scale.set(s, s, 1);
       });
 
@@ -303,7 +302,6 @@ export default function Graph({ data, highlightIds, selectedNode, onNodeClick })
 
       nodeMapRef.current.set(n.id, {
         group, glow, core, labelDiv: div, baseGlowScale,
-        breathPhase: Math.random() * Math.PI * 2,
         scaleMult: 1,
       });
     });
