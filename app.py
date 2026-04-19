@@ -9,9 +9,15 @@ Local run notes:
 from __future__ import annotations
 
 import os
+import sys
+from pathlib import Path
 from typing import Any
 
 import httpx
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 try:  # pragma: no cover - Ara SDK is optional during local backend testing
     from ara_sdk import Automation, env, secret, tool

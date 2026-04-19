@@ -15,6 +15,7 @@ from graph import memory_graph
 from ingest import ingest_ara_event, ingest_omi_conversation, ingest_omi_day_summary, ingest_omi_memory, ingest_omi_transcript
 from models import AraActionRequest, GraphResponse, HealthResponse, IngestResponse, model_dump_compat
 from retrieval import build_context_pack, build_recent_context_pack, serialize_edge, serialize_node
+from snapshot import JSON_EXPORT_PATH, MARKDOWN_EXPORT_PATH, build_memory_snapshot_json, build_memory_snapshot_markdown, write_snapshot_files
 
 
 settings = get_settings()
@@ -72,6 +73,7 @@ async def webhook_omi_memory(
     _verify_token(x_api_token)
     _log_webhook("omi_memory", payload)
     node = ingest_omi_memory(payload)
+    write_snapshot_files()
     return IngestResponse(ok=True, node_id=node.id)
 
 
@@ -82,8 +84,13 @@ async def webhook_omi_conversation(
 ) -> IngestResponse:
     _verify_token(x_api_token)
     _log_webhook("omi_conversation", payload)
-    node = ingest_omi_conversation(payload)
-    return IngestResponse(ok=True, node_id=node.id)
+    try:
+        node = ingest_omi_conversation(payload)
+        write_snapshot_files()
+        return IngestResponse(ok=True, node_id=node.id)
+    except Exception:
+        logger.exception("webhook_failed endpoint=omi_conversation preview=%s", _preview_payload(payload))
+        raise
 
 
 @app.get("/webhook/omi/conversation")
@@ -98,8 +105,13 @@ async def webhook_omi_day_summary(
 ) -> IngestResponse:
     _verify_token(x_api_token)
     _log_webhook("omi_day_summary", payload)
-    node = ingest_omi_day_summary(payload)
-    return IngestResponse(ok=True, node_id=node.id)
+    try:
+        node = ingest_omi_day_summary(payload)
+        write_snapshot_files()
+        return IngestResponse(ok=True, node_id=node.id)
+    except Exception:
+        logger.exception("webhook_failed endpoint=omi_day_summary preview=%s", _preview_payload(payload))
+        raise
 
 
 @app.get("/webhook/omi/day-summary")
@@ -115,6 +127,7 @@ async def webhook_omi_transcript(
     _verify_token(x_api_token)
     _log_webhook("omi_transcript", payload)
     node = ingest_omi_transcript(payload)
+    write_snapshot_files()
     return IngestResponse(ok=True, node_id=node.id)
 
 
@@ -127,6 +140,7 @@ async def webhook_ara_action(
     payload = model_dump_compat(event)
     _log_webhook("ara_action", payload)
     node = ingest_ara_event(payload)
+    write_snapshot_files()
     return IngestResponse(ok=True, node_id=node.id)
 
 
@@ -135,6 +149,7 @@ async def webhook_omi_legacy(payload: dict[str, Any]) -> IngestResponse:
     """Backward-compatible alias for early hackathon wiring."""
     _log_webhook("omi_legacy", payload)
     node = ingest_omi_memory(payload)
+    write_snapshot_files()
     return IngestResponse(ok=True, node_id=node.id)
 
 
@@ -152,6 +167,7 @@ async def webhook_ara_legacy(event: dict[str, Any]) -> IngestResponse:
             },
         }
     )
+    write_snapshot_files()
     return IngestResponse(ok=True, node_id=node.id)
 
 
@@ -181,6 +197,23 @@ async def get_graph() -> GraphResponse:
     nodes = [serialize_node(node, pagerank=pagerank.get(node.id, 0.0)) for node in memory_graph.get_all_nodes()]
     edges = [serialize_edge(edge) for edge in memory_graph.get_all_edges()]
     return GraphResponse(nodes=nodes, edges=edges)
+
+
+@app.get("/export/memory-palace.json")
+async def export_memory_palace_json() -> dict[str, Any]:
+    snapshot = build_memory_snapshot_json()
+    write_snapshot_files()
+    return snapshot
+
+
+@app.get("/export/memory-palace.md")
+async def export_memory_palace_markdown() -> dict[str, str]:
+    markdown = build_memory_snapshot_markdown()
+    write_snapshot_files()
+    return {
+        "path": str(MARKDOWN_EXPORT_PATH.resolve()),
+        "content": markdown,
+    }
 
 
 @app.get("/health", response_model=HealthResponse)

@@ -27,6 +27,13 @@ def _parse_timestamp(raw: Any) -> datetime:
 def _string_list(value: Any) -> list[str]:
     if isinstance(value, list):
         return [str(item).strip() for item in value if str(item).strip()]
+    if isinstance(value, dict):
+        values = []
+        for item in value.values():
+            text = str(item).strip()
+            if text:
+                values.append(text)
+        return values
     if isinstance(value, str) and value.strip():
         return [value.strip()]
     return []
@@ -34,6 +41,20 @@ def _string_list(value: Any) -> list[str]:
 
 def _extract_action_items(value: Any) -> list[str]:
     items: list[str] = []
+    if isinstance(value, dict):
+        nested = (
+            value.get("items")
+            or value.get("action_items")
+            or value.get("tasks")
+            or value.get("results")
+        )
+        if nested is not None:
+            return _extract_action_items(nested)
+        for key, raw in value.items():
+            text = str(raw).strip() if key not in {"id", "done", "completed"} else ""
+            if text:
+                items.append(text)
+        return items
     if isinstance(value, list):
         for item in value:
             if isinstance(item, dict):
@@ -49,17 +70,72 @@ def _extract_action_items(value: Any) -> list[str]:
     return items
 
 
+def _unwrap_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    for key in ("data", "conversation", "memory", "payload", "event"):
+        nested = payload.get(key)
+        if isinstance(nested, dict):
+            return nested
+    return payload
+
+
+def _normalize_transcript_segments(value: Any) -> list[dict[str, Any]]:
+    if value is None:
+        return []
+    if isinstance(value, dict):
+        nested = (
+            value.get("segments")
+            or value.get("items")
+            or value.get("utterances")
+            or value.get("messages")
+            or value.get("results")
+        )
+        if nested is not None:
+            return _normalize_transcript_segments(nested)
+        if any(key in value for key in ("text", "speaker_name", "person_name", "speaker")):
+            return [value]
+        return []
+    if isinstance(value, list):
+        normalized: list[dict[str, Any]] = []
+        for item in value:
+            if isinstance(item, dict):
+                normalized.append(item)
+            elif isinstance(item, str) and item.strip():
+                normalized.append({"text": item.strip()})
+        return normalized
+    if isinstance(value, str) and value.strip():
+        return [{"text": value.strip()}]
+    return []
+
+
 def _extract_people(payload: dict[str, Any], structured: dict[str, Any], transcript_segments: list[dict[str, Any]]) -> list[str]:
     people = _string_list(payload.get("people") or structured.get("people"))
     for segment in transcript_segments:
-        speaker_name = str(segment.get("speaker_name") or segment.get("person_name") or "").strip()
+        if not isinstance(segment, dict):
+            continue
+        speaker_name = str(
+            segment.get("speaker_name")
+            or segment.get("person_name")
+            or segment.get("speaker")
+            or ""
+        ).strip()
         if speaker_name and speaker_name not in people and not speaker_name.startswith("SPEAKER_"):
             people.append(speaker_name)
     return people
 
 
 def _segments_to_text(segments: list[dict[str, Any]]) -> str | None:
-    texts = [str(segment.get("text") or "").strip() for segment in segments]
+    texts = []
+    for segment in segments:
+        if not isinstance(segment, dict):
+            continue
+        text = str(
+            segment.get("text")
+            or segment.get("content")
+            or segment.get("transcript")
+            or ""
+        ).strip()
+        if text:
+            texts.append(text)
     cleaned = [text for text in texts if text]
     if not cleaned:
         return None
@@ -82,10 +158,15 @@ class OmiAdapter:
         return headers
 
     def handle_memory_webhook(self, payload: dict[str, Any]) -> OmiMemoryEvent:
-        structured = payload.get("structured")
+        payload = _unwrap_payload(payload)
+        structured = payload.get("structured") or payload.get("structured_summary")
         if not isinstance(structured, dict):
             structured = {}
-        transcript_segments = list(payload.get("transcript_segments") or [])
+        transcript_segments = _normalize_transcript_segments(
+            payload.get("transcript_segments")
+            or payload.get("segments")
+            or payload.get("transcript")
+        )
         transcript_text = (
             payload.get("transcript")
             or payload.get("transcript_text")
@@ -102,7 +183,12 @@ class OmiAdapter:
             or "Untitled Omi memory"
         )
         people = _extract_people(payload, structured, transcript_segments)
-        action_items = _extract_action_items(payload.get("action_items") or structured.get("action_items"))
+        action_items = _extract_action_items(
+            payload.get("action_items")
+            or payload.get("tasks")
+            or structured.get("action_items")
+            or structured.get("tasks")
+        )
         client = str(
             payload.get("client")
             or payload.get("device_type")
@@ -126,6 +212,7 @@ class OmiAdapter:
         )
 
     def handle_day_summary_webhook(self, payload: dict[str, Any]) -> OmiMemoryEvent:
+        payload = _unwrap_payload(payload)
         sections = payload.get("sections") or payload.get("highlights") or []
         summary_bits = [str(payload.get("summary") or payload.get("title") or "").strip()]
         if isinstance(sections, list):
@@ -144,6 +231,7 @@ class OmiAdapter:
         )
 
     def handle_transcript_webhook(self, payload: dict[str, Any]) -> OmiTranscriptChunk:
+        payload = _unwrap_payload(payload)
         session_id = str(payload.get("session_id") or payload.get("conversation_id") or "unknown-session")
         text = str(payload.get("text") or payload.get("transcript") or "").strip()
         chunk_id = str(payload.get("chunk_id") or payload.get("id") or hashlib.sha1(text.encode("utf-8")).hexdigest()[:12])
