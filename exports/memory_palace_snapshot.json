@@ -1,0 +1,1821 @@
+{
+  "summary": "Recent context suggests: Wendy | The speaker informally pitches their startup, Banana AI, described as a frontier phone agentic AI software with over 200 | A founder of the startup Aura has an informal conversation with a VC from BCG Ventures who expresses interest in the sta",
+  "recent_memories": [],
+  "recent_transcript_chunks": [],
+  "related_ara_actions": [],
+  "task_candidates": [],
+  "nodes": [
+    {
+      "id": "omi_mem-1",
+      "content": "Working on Omi to Ara integration",
+      "node_type": "omi_memory",
+      "source": "omi",
+      "timestamp": "2026-04-19 19:16:22.614466+00:00",
+      "metadata": {
+        "omi_id": "mem-1",
+        "client": "unknown",
+        "people": [
+          "Alice"
+        ],
+        "action_items": [
+          "Test query endpoint"
+        ],
+        "summary": "Working on Omi to Ara integration",
+        "transcript_text": null,
+        "raw_payload": {
+          "id": "mem-1",
+          "summary": "Working on Omi to Ara integration",
+          "people": [
+            "Alice"
+          ],
+          "action_items": [
+            "Test query endpoint"
+          ]
+        }
+      },
+      "pagerank": 0.032556306928806525
+    },
+    {
+      "id": "person_ac224061fa4146eb9e8bf58132b7212e",
+      "content": "Alice",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 19:16:22.614466+00:00",
+      "metadata": {
+        "derived_from": "omi_mem-1",
+        "kind": "person"
+      },
+      "pagerank": 0.015474382420318773
+    },
+    {
+      "id": "task_4ea976d38aef4bff9396325faab4277a",
+      "content": "Test query endpoint",
+      "node_type": "task_candidate",
+      "source": "derived",
+      "timestamp": "2026-04-19 19:16:22.614466+00:00",
+      "metadata": {
+        "derived_from": "omi_mem-1",
+        "kind": "action_item"
+      },
+      "pagerank": 0.015474382420318773
+    },
+    {
+      "id": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "content": "The speaker informally pitches their startup, Banana AI, described as a frontier phone agentic AI software with over 200 users and a memory layer for phone calls, to someone claiming to be a VC at Andreessen Horowitz (a16z). The VC expresses strong interest in investing and offers to be contacted when the startup is ready for investment, providing an email address (a.green@bob.com). The VC also offers mentorship support via a contact named Hannah Montana, providing her email (hanna.montana@waterbottle.com) and encouraging the founder to reach out, mentioning that they were referred by the VC.",
+      "node_type": "omi_conversation",
+      "source": "omi",
+      "timestamp": "2026-04-19 19:54:13.107679+00:00",
+      "metadata": {
+        "omi_id": "a8252334-711e-423d-9119-57565b00e46a",
+        "client": "omi",
+        "people": [
+          "Speaker 0"
+        ],
+        "action_items": [
+          "Email VC at agreen@bob.com about Banana AI investment",
+          "Email Hannah Montana at hanna.montana@waterbottle.com for startup mentorship"
+        ],
+        "summary": "The speaker informally pitches their startup, Banana AI, described as a frontier phone agentic AI software with over 200 users and a memory layer for phone calls, to someone claiming to be a VC at Andreessen Horowitz (a16z). The VC expresses strong interest in investing and offers to be contacted when the startup is ready for investment, providing an email address (a.green@bob.com). The VC also offers mentorship support via a contact named Hannah Montana, providing her email (hanna.montana@waterbottle.com) and encouraging the founder to reach out, mentioning that they were referred by the VC.",
+        "transcript_text": "Hello. I have a start up named dot AI and it basically is a memory layer for phone calls. And it uses agentic AI. Wow. That's so cool. I am actually a VC for a 16 z, and I think you're super cool. Your setup is super cool. Wow. Thank you for sharing. I can tell you more about banana.ai. Yeah. Go ahead. Banana AI is a the frontier phone agentic AI software, and we have over 200 users And we're looking for someone to invest because we need money But are you interested? Yes. I'm super interested, please. Please let me know. You can contact me at Bob dot com Sorry. It's a green at bob dot com. And you can email me if you want to have a chat again when you're ready for investments. Oh, I'm looking for also, if you need like, mentorship, Like, who who is the best person we can talk to? Oh, yes. You can follow-up or, like, message my friend Hannah Montana. She's very experienced in this field, so you should you can email her and tell her that I sent you. What's your email? Oh, yeah. It's hanna dot montana at water bottle dot com.",
+        "event_kind": "conversation",
+        "raw_payload": {
+          "id": "a8252334-711e-423d-9119-57565b00e46a",
+          "created_at": "2026-04-19T19:54:13.107679+00:00",
+          "started_at": "2026-04-19T19:54:14.603328+00:00",
+          "finished_at": "2026-04-19T19:56:18.679859+00:00",
+          "source": "omi",
+          "language": "en",
+          "structured": {
+            "title": "Startup pitch for Banana AI to an interested VC",
+            "overview": "The speaker informally pitches their startup, Banana AI, described as a frontier phone agentic AI software with over 200 users and a memory layer for phone calls, to someone claiming to be a VC at Andreessen Horowitz (a16z). The VC expresses strong interest in investing and offers to be contacted when the startup is ready for investment, providing an email address (a.green@bob.com). The VC also offers mentorship support via a contact named Hannah Montana, providing her email (hanna.montana@waterbottle.com) and encouraging the founder to reach out, mentioning that they were referred by the VC.",
+            "emoji": "\ud83d\udcde",
+            "category": "entrepreneurship",
+            "action_items": [
+              {
+                "description": "Email VC at agreen@bob.com about Banana AI investment",
+                "completed": false,
+                "created_at": "2026-04-19T19:56:24.863772+00:00",
+                "updated_at": null,
+                "due_at": null,
+                "completed_at": null,
+                "conversation_id": null
+              },
+              {
+                "description": "Email Hannah Montana at hanna.montana@waterbottle.com for startup mentorship",
+                "completed": false,
+                "created_at": "2026-04-19T19:56:24.863772+00:00",
+                "updated_at": null,
+                "due_at": null,
+                "completed_at": null,
+                "conversation_id": null
+              }
+            ],
+            "events": []
+          },
+          "transcript_segments": [
+            {
+              "id": "82db7f8c-53a4-472c-8dfe-8db2693eb969",
+              "text": "Hello. I have a start up named dot AI and it basically is a memory layer for phone calls. And it uses agentic AI. Wow. That's so cool.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 2.384185791015625e-07,
+              "end": 15.445375238418578,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "23fb7fe8-50aa-445b-a7e8-577096138b60",
+              "text": "I am actually a VC for a 16 z, and I think you're super cool. Your setup is super cool.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 16.29337523841858,
+              "end": 23.194687238418577,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "e925906e-0398-4de7-a21f-224c3a3a0848",
+              "text": "Wow. Thank you for sharing. I can tell you more about banana.ai. Yeah. Go ahead. Banana AI is a the frontier phone agentic AI software, and we have over 200 users And we're looking for someone to invest because we need money But are you interested? Yes. I'm super interested, please.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 27.96800023841858,
+              "end": 61.10400023841858,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "96bff60d-e284-4121-8813-e0d0dffa4bb3",
+              "text": "Please let me know. You can contact me at",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 62.09068723841858,
+              "end": 65.97869023841858,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "0cc5e350-d7e5-4085-b0e9-94bd6a3199e6",
+              "text": "Bob dot com Sorry. It's a green at bob dot com. And you can email me if you want to have a chat again when you're ready for investments.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 69.12937023841857,
+              "end": 86.87537423841857,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "7e224296-8f92-42d2-be04-1aee7dad0819",
+              "text": "Oh, I'm looking for also, if you need like, mentorship, Like, who who is the best person we can talk to? Oh, yes. You can follow-up or, like, message my friend",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 88.74138023841859,
+              "end": 103.34938023841858,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "bd3e2701-7331-49fd-963b-9126ae8754ba",
+              "text": "Hannah Montana. She's very experienced in this field, so you should you can email her and tell her that I sent you. What's your email? Oh, yeah. It's hanna dot montana at water bottle dot com.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 107.60538023841858,
+              "end": 123.61600523841858,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            }
+          ],
+          "transcript_segments_compressed": true,
+          "geolocation": {
+            "google_place_id": "ChIJDanBZdwEyIkRPkLsfwq5U0A",
+            "latitude": 39.32228794381515,
+            "longitude": -76.62281029091673,
+            "address": "2930 Remington Ave, Baltimore, MD 21211, USA",
+            "location_type": "car_rental"
+          },
+          "photos": [],
+          "audio_files": [
+            {
+              "id": "b291aeb2-cfc2-41d4-bb66-a5b999a38dcf",
+              "uid": "u3GEN5IHkYf9WxEsvDoJ3z4kqxb2",
+              "conversation_id": "a8252334-711e-423d-9119-57565b00e46a",
+              "chunk_timestamps": [
+                1776628453.446,
+                1776628514.18
+              ],
+              "provider": "gcp",
+              "started_at": "2026-04-19T19:54:13.446000+00:00",
+              "duration": 181.226625
+            }
+          ],
+          "private_cloud_sync_enabled": true,
+          "apps_results": [
+            {
+              "app_id": "01K89EAAY3XMJA0SJ7NSP6N5GT",
+              "content": "## Startup overview\n- Startup name: banana.ai (phone agentic AI)\n- Acts as memory layer for phone calls\n- Positioned as frontier phone agent software\n\n## Traction and funding\n- Currently has over 200 users\n- Actively seeking investment funding\n- Open to further discussions with interested investors\n\n## Investor interest and contact\n- VC from a16z expresses strong interest\n- Primary contact email: green@bob.com\n- Invitation to email when ready for investments\n\n## Mentorship and advisor contact\n- Mentor recommended: Hannah Montana\n- Hannah described as very experienced in field\n- Hannah\u2019s email: hanna.montana@waterbottle.com\n\n## Next steps\n- Founder to email green@bob.com for investment talks\n- Founder to email Hannah Montana for mentorship\n- Prepare more detailed materials before outreach"
+            }
+          ],
+          "suggested_summarization_apps": [
+            "01K89EAAY3XMJA0SJ7NSP6N5GT"
+          ],
+          "plugins_results": [],
+          "external_data": null,
+          "app_id": null,
+          "discarded": false,
+          "visibility": "private",
+          "starred": false,
+          "processing_memory_id": null,
+          "processing_conversation_id": null,
+          "status": "completed",
+          "is_locked": false,
+          "data_protection_level": "enhanced",
+          "folder_id": "fd96644d-7aff-4655-9db1-aab136e48ab7",
+          "call_id": null,
+          "folder_name": "Work"
+        }
+      },
+      "pagerank": 0.16348043943155185
+    },
+    {
+      "id": "person_29ec217e276044279f336b928e84bdb2",
+      "content": "Speaker 0",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 19:54:13.107679+00:00",
+      "metadata": {
+        "derived_from": "conv_a8252334-711e-423d-9119-57565b00e46a",
+        "kind": "person"
+      },
+      "pagerank": 0.04098924957430491
+    },
+    {
+      "id": "task_69bce4d7d7fd44738e7e232ad56c2535",
+      "content": "Email VC at agreen@bob.com about Banana AI investment",
+      "node_type": "task_candidate",
+      "source": "derived",
+      "timestamp": "2026-04-19 19:54:13.107679+00:00",
+      "metadata": {
+        "derived_from": "conv_a8252334-711e-423d-9119-57565b00e46a",
+        "kind": "action_item"
+      },
+      "pagerank": 0.049430270857087226
+    },
+    {
+      "id": "task_4cdf3081e7f6461d931f6f3e5f57e067",
+      "content": "Email Hannah Montana at hanna.montana@waterbottle.com for startup mentorship",
+      "node_type": "task_candidate",
+      "source": "derived",
+      "timestamp": "2026-04-19 19:54:13.107679+00:00",
+      "metadata": {
+        "derived_from": "conv_a8252334-711e-423d-9119-57565b00e46a",
+        "kind": "action_item"
+      },
+      "pagerank": 0.051994262322601875
+    },
+    {
+      "id": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+      "content": "A reporter from ABC News, Michael Lee, informally interviews Wendy, a Harvard University student majoring in computer science and philosophy. Wendy explains she chose computer science for its high earning potential, citing big tech companies and startup culture. She mentions recently winning multiple awards (grand prize, most technical, most viral) at the ARA ARA hackathon. When asked how prospective CS students can achieve similar success, she emphasizes being able to \"vibe code\" and network. For networking or follow-up questions, she provides her email (Wendy.Harvard@treehacks.com) but notes she does not have a phone. She advises students to search for resources on Google. When asked for steps to be as successful as her, she responds that one is either born with it or not, and the interview ends.",
+      "node_type": "omi_conversation",
+      "source": "omi",
+      "timestamp": "2026-04-19 20:04:21.814560+00:00",
+      "metadata": {
+        "omi_id": "9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+        "client": "omi",
+        "people": [
+          "Speaker 0",
+          "Wendy",
+          "Speaker 1"
+        ],
+        "action_items": [],
+        "summary": "A reporter from ABC News, Michael Lee, informally interviews Wendy, a Harvard University student majoring in computer science and philosophy. Wendy explains she chose computer science for its high earning potential, citing big tech companies and startup culture. She mentions recently winning multiple awards (grand prize, most technical, most viral) at the ARA ARA hackathon. When asked how prospective CS students can achieve similar success, she emphasizes being able to \"vibe code\" and network. For networking or follow-up questions, she provides her email (Wendy.Harvard@treehacks.com) but notes she does not have a phone. She advises students to search for resources on Google. When asked for steps to be as successful as her, she responds that one is either born with it or not, and the interview ends.",
+        "transcript_text": "I'm a representative from ABC News as an a reporter Michael Lee, and I would like to ask you some questions. So first of all, let's introduce yourself. Hi. I'm Wendy, and I'm a student at the Community College called Harvard University. I major in computer science and philosophy. That's super cool. Can you just, like, tell us a little bit more about your and some challenges of being at such a small university? Well, I I'm doing CS because it makes a lot of money. Okay. Yeah. That's really cool. I would I would like to ask you a little bit more. About, like, why you think CS makes a lot of money. CS makes a lot of money because big tech companies make a lot of money. And, also, I interested in the CS startup culture. Recent, I went to the ARA ARA hackathon. Where we won the grand prize and the most technical prize and the most viral prize. Dang. That's a lot of prizes. So for, like, a prospective CEO student, how might they achieve such results? I think the most important thing is to know how to vibe code and know how to network. Yeah. Totally. Well, just regarding networking, if a student to ask you more questions, how can we reach you? You can reach me at Wendy.Harvard@treehacks.com. That's super cool. Do you have a number to go over that? No. I don't actually have a phone. Okay. Well, totally. Well, in general, if a student wants to search for such useful sources, where should they look? Just search it up on Google. Wish anymore. Oh, and you can use Oh, that's really cool. And then one last question for you. That if a student wants to be just as successful as you are, are the steps that they should take? You're either born with it or you're not. Like, I don't know what to tell you. Well, thank you. Wendy, from Harvard. Yep. Of course.",
+        "event_kind": "conversation",
+        "raw_payload": {
+          "id": "9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+          "created_at": "2026-04-19T20:04:21.814560+00:00",
+          "started_at": "2026-04-19T20:04:23.517787+00:00",
+          "finished_at": "2026-04-19T20:06:58.588589+00:00",
+          "source": "omi",
+          "language": "en",
+          "structured": {
+            "title": "Student Interview About Studying Computer Science and Hackathon Success",
+            "overview": "A reporter from ABC News, Michael Lee, informally interviews Wendy, a Harvard University student majoring in computer science and philosophy. Wendy explains she chose computer science for its high earning potential, citing big tech companies and startup culture. She mentions recently winning multiple awards (grand prize, most technical, most viral) at the ARA ARA hackathon. When asked how prospective CS students can achieve similar success, she emphasizes being able to \"vibe code\" and network. For networking or follow-up questions, she provides her email (Wendy.Harvard@treehacks.com) but notes she does not have a phone. She advises students to search for resources on Google. When asked for steps to be as successful as her, she responds that one is either born with it or not, and the interview ends.",
+            "emoji": "\ud83c\udfa4",
+            "category": "education",
+            "action_items": [],
+            "events": []
+          },
+          "transcript_segments": [
+            {
+              "id": "65a46d5f-18b4-4326-a771-8087f67ad50d",
+              "text": "I'm a representative from ABC News as an a reporter Michael Lee, and I would like to ask you some questions. So first of all, let's introduce yourself.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 4.76837158203125e-07,
+              "end": 10.466687476837158,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "223a1f38-3181-422d-8780-c0ba090afc84",
+              "text": "Hi. I'm Wendy, and I'm a student at the Community College called Harvard University. I major in computer science and philosophy.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": "45b24bb4-c003-41f9-9d45-f22944be5117",
+              "start": 11.264000476837158,
+              "end": 25.48537447683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Wendy"
+            },
+            {
+              "id": "28faefd1-722e-48a0-8021-d2c91717b294",
+              "text": "That's super cool. Can you just, like, tell us a little bit more about your and some challenges of being at such a small university?",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 26.592000476837157,
+              "end": 34.72200047683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "4ce129d8-cb9c-4a7d-8f5b-4eb3df707a05",
+              "text": "Well, I I'm doing CS because it makes a lot of money. Okay. Yeah. That's really cool. I would I would like to ask you a little bit more.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 36.26137547683716,
+              "end": 50.00537547683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "dac952c7-bcbb-4260-bed7-fe5e38f74c11",
+              "text": "About, like, why you think CS makes a lot of money. CS makes a lot of money because big tech companies make a lot of money. And, also, I interested in the CS startup culture. Recent, I went to the ARA ARA hackathon.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 50.67737647683716,
+              "end": 65.91600047683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "18fa7073-5962-4088-a1ea-bc9150204cf1",
+              "text": "Where we won the grand prize and the most technical prize and the most viral prize. Dang. That's a lot of prizes. So for, like, a prospective CEO student, how might they achieve such results?",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 69.03468047683715,
+              "end": 83.74937447683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "b11ecd59-6dd4-4848-95ea-00585fe2969a",
+              "text": "I think the most important thing is to know how to vibe code and know how to network.",
+              "speaker": "SPEAKER_1",
+              "speaker_id": 1,
+              "is_user": false,
+              "person_id": null,
+              "start": 89.60000047683715,
+              "end": 92.79999547683715,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 1"
+            },
+            {
+              "id": "e8e74063-3bde-468b-a6f6-11040e9ecb61",
+              "text": "Yeah. Totally. Well, just regarding networking, if a student to ask you more questions, how can we reach you?",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 93.83469447683716,
+              "end": 99.61469047683715,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "3fd60a11-4b87-4223-8553-11c6846c18e4",
+              "text": "You can reach me at Wendy.Harvard@treehacks.com.",
+              "speaker": "SPEAKER_1",
+              "speaker_id": 1,
+              "is_user": false,
+              "person_id": null,
+              "start": 100.24000047683715,
+              "end": 104.64000047683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 1"
+            },
+            {
+              "id": "4c913908-1c24-40b7-bd6e-217846d3a0aa",
+              "text": "That's super cool. Do you have a number to go over that?",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 106.52268047683715,
+              "end": 108.76269047683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "2772c5f6-3e6a-4a82-a705-066478360829",
+              "text": "No. I don't actually have a phone.",
+              "speaker": "SPEAKER_1",
+              "speaker_id": 1,
+              "is_user": false,
+              "person_id": null,
+              "start": 109.22668547683716,
+              "end": 111.54668447683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 1"
+            },
+            {
+              "id": "a0168973-2c01-43c1-af70-8794278e6f05",
+              "text": "Okay. Well, totally. Well, in general, if a student wants to search for such useful sources, where should they look?",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 113.00799647683716,
+              "end": 121.42800047683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "29793a03-af04-4179-a1bf-15cfdebddb56",
+              "text": "Just search it up on Google. Wish anymore.",
+              "speaker": "SPEAKER_1",
+              "speaker_id": 1,
+              "is_user": false,
+              "person_id": null,
+              "start": 122.72537047683716,
+              "end": 130.07469047683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 1"
+            },
+            {
+              "id": "cee8aaa1-7ebe-455b-9ee0-b4e3c6b6f1ea",
+              "text": "Oh, and you can use Oh, that's really cool. And then one last question for you. That if a student wants to be just as successful as you are, are the steps that they should take?",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 132.91737047683716,
+              "end": 141.99669047683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "68e5f8d5-bd97-4022-8005-33964920c88f",
+              "text": "You're either born with it or you're not. Like, I don't know what to tell you.",
+              "speaker": "SPEAKER_1",
+              "speaker_id": 1,
+              "is_user": false,
+              "person_id": null,
+              "start": 142.67737047683715,
+              "end": 145.47737047683717,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 1"
+            },
+            {
+              "id": "f97cbd4a-2d24-4f46-ac68-28f9c2a3e08e",
+              "text": "Well, thank you. Wendy, from Harvard.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 149.07738047683716,
+              "end": 152.29869047683715,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "9df4288d-ae44-4f4c-87f7-8881cf3f9c45",
+              "text": "Yep. Of course.",
+              "speaker": "SPEAKER_1",
+              "speaker_id": 1,
+              "is_user": false,
+              "person_id": null,
+              "start": 153.23738047683716,
+              "end": 153.95737047683716,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 1"
+            }
+          ],
+          "transcript_segments_compressed": true,
+          "geolocation": {
+            "google_place_id": "ChIJDanBZdwEyIkRPkLsfwq5U0A",
+            "latitude": 39.32228794381515,
+            "longitude": -76.62281029091673,
+            "address": "2930 Remington Ave, Baltimore, MD 21211, USA",
+            "location_type": "car_rental"
+          },
+          "photos": [],
+          "audio_files": [
+            {
+              "id": "f6d4e1ab-3eac-47aa-825e-3954ab2cd6e3",
+              "uid": "u3GEN5IHkYf9WxEsvDoJ3z4kqxb2",
+              "conversation_id": "9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+              "chunk_timestamps": [
+                1776629062.315,
+                1776629123.058
+              ],
+              "provider": "gcp",
+              "started_at": "2026-04-19T20:04:22.315000+00:00",
+              "duration": 181.235625
+            }
+          ],
+          "private_cloud_sync_enabled": true,
+          "apps_results": [
+            {
+              "app_id": "01K89EAAY3XMJA0SJ7NSP6N5GT",
+              "content": "## Wendy\u2019s Background  \n- Wendy studies at small \u201cHarvard University\u201d community college  \n- Majors: computer science and philosophy  \n- Interview conducted by ABC News reporter Michael Lee  \n\n## Motivation for Studying CS  \n- Chose CS mainly because \u201cit makes a lot of money\u201d  \n- Believes big tech companies earn a lot  \n- Interested in CS startup and hackathon culture  \n\n## Hackathon Achievements  \n- Recently attended ARA ARA hackathon  \n- Team won grand prize  \n- Also won most technical and most viral prizes  \n\n## Advice for Prospective CS Students  \n- Key skills: \u201cvibe code\u201d and network well  \n- For resources, Wendy suggests just \u201csearch it up on Google\u201d  \n- Mentions \u201cyou can use Oh\u201d as an additional tool/source  \n\n## Contact and Attitude on Success  \n- Contact email: Wendy.Harvard@treehacks.com  \n- Says she does not have a phone  \n- Believes success is innate: \u201cborn with it or you\u2019re not\u201d  \n\n## Next Steps  \n- Prospective students can email Wendy with questions  \n- Students should practice coding, networking, and using online resources"
+            }
+          ],
+          "suggested_summarization_apps": [
+            "01K89EAAY3XMJA0SJ7NSP6N5GT"
+          ],
+          "plugins_results": [],
+          "external_data": null,
+          "app_id": null,
+          "discarded": false,
+          "visibility": "private",
+          "starred": false,
+          "processing_memory_id": null,
+          "processing_conversation_id": null,
+          "status": "completed",
+          "is_locked": false,
+          "data_protection_level": "enhanced",
+          "folder_id": "fd96644d-7aff-4655-9db1-aab136e48ab7",
+          "call_id": null,
+          "folder_name": "Work"
+        }
+      },
+      "pagerank": 0.11044612970701928
+    },
+    {
+      "id": "person_9f7340c337324e379443407971b8eb74",
+      "content": "Speaker 0",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:04:21.814560+00:00",
+      "metadata": {
+        "derived_from": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+        "kind": "person"
+      },
+      "pagerank": 0.02597917242684864
+    },
+    {
+      "id": "person_56b1338c58fd4218b44990d30831f80e",
+      "content": "Wendy",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:04:21.814560+00:00",
+      "metadata": {
+        "derived_from": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+        "kind": "person"
+      },
+      "pagerank": 0.029757041333166798
+    },
+    {
+      "id": "person_4eef801e5375426c96e10f34e6ab4525",
+      "content": "Speaker 1",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:04:21.814560+00:00",
+      "metadata": {
+        "derived_from": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+        "kind": "person"
+      },
+      "pagerank": 0.02597917242684864
+    },
+    {
+      "id": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+      "content": "A founder of the startup Aura has an informal conversation with a VC from BCG Ventures who expresses interest in the startup, shares their contact email, and invites the founder to reach out to schedule a casual coffee/bubble tea chat at Kung Fu Tea sometime over the upcoming weekend, asking to be reminded.",
+      "node_type": "omi_conversation",
+      "source": "omi",
+      "timestamp": "2026-04-19 20:39:18.298848+00:00",
+      "metadata": {
+        "omi_id": "7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+        "client": "omi",
+        "people": [
+          "Speaker 0",
+          "Speaker 1"
+        ],
+        "action_items": [
+          "Schedule coffee chat with Vivian Banana at Kung Fu Tea"
+        ],
+        "summary": "A founder of the startup Aura has an informal conversation with a VC from BCG Ventures who expresses interest in the startup, shares their contact email, and invites the founder to reach out to schedule a casual coffee/bubble tea chat at Kung Fu Tea sometime over the upcoming weekend, asking to be reminded.",
+        "transcript_text": "Hi. I have a start up called Aura, and we were this AI computing startup Not AI computing. AI computer startup. Wow. That's so cool. I am a VC at BCG Ventures. And we think your thing is pretty cool. Wow. Thank you. Have any advice? Yeah. No. You guys are doing great. Here's my contact. What name is.code@forsale.com. Yeah. Call me up I'm free this weekend, so you should remind remind me if you want to schedule some some cool some some coffee chat I really like this this bubble tea place called kung fu tea. So we can go there if you want. Just just remind me. Wow. Thanks. What's your name? Oh, yeah. My name is Vivian Banana.",
+        "event_kind": "conversation",
+        "raw_payload": {
+          "id": "7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+          "created_at": "2026-04-19T20:39:18.298848+00:00",
+          "started_at": "2026-04-19T20:39:21.469273+00:00",
+          "finished_at": "2026-04-19T20:40:40.003638+00:00",
+          "source": "omi",
+          "language": "en",
+          "structured": {
+            "title": "Networking Chat with VC about Aura Startup",
+            "overview": "A founder of the startup Aura has an informal conversation with a VC from BCG Ventures who expresses interest in the startup, shares their contact email, and invites the founder to reach out to schedule a casual coffee/bubble tea chat at Kung Fu Tea sometime over the upcoming weekend, asking to be reminded.",
+            "emoji": "\ud83e\udd1d",
+            "category": "entrepreneurship",
+            "action_items": [
+              {
+                "description": "Schedule coffee chat with Vivian Banana at Kung Fu Tea",
+                "completed": false,
+                "created_at": "2026-04-19T20:40:46.714245+00:00",
+                "updated_at": null,
+                "due_at": null,
+                "completed_at": null,
+                "conversation_id": null
+              }
+            ],
+            "events": []
+          },
+          "transcript_segments": [
+            {
+              "id": "f7271088-8c5e-46e8-b88c-244e87c35f8e",
+              "text": "Hi. I have a start up called Aura, and we were this AI computing startup Not AI computing. AI computer startup. Wow. That's so cool. I am a VC at BCG Ventures.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 2.384185791015625e-07,
+              "end": 17.97331223841858,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "663c041f-d46a-4d83-bb9f-38899dc061ef",
+              "text": "And we think your thing is pretty cool. Wow. Thank you. Have any advice? Yeah. No. You guys are doing great. Here's my contact.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 20.12262523841858,
+              "end": 34.23462723841858,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "271e1604-ef0d-40db-800f-d5fc97193de4",
+              "text": "What name is.code@forsale.com.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 36.49062323841858,
+              "end": 41.72800023841858,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "9fa9d5d2-46ba-4ff8-aa19-60e1eafdbb79",
+              "text": "Yeah. Call me up I'm free this weekend, so you should remind remind me if you want to schedule some some cool some some coffee chat I really like this this bubble tea place called kung fu tea. So we can go there if you want. Just just remind me.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 45.83462523841858,
+              "end": 68.35343436866759,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "a7430583-10ca-4efb-9175-503b089c998d",
+              "text": "Wow. Thanks. What's your name? Oh, yeah.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 68.79081436866758,
+              "end": 73.0468093686676,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "9cdefcda-fc3d-4eb6-b82e-a2920df06edf",
+              "text": "My name is Vivian Banana.",
+              "speaker": "SPEAKER_1",
+              "speaker_id": 1,
+              "is_user": false,
+              "person_id": null,
+              "start": 76.79081436866758,
+              "end": 77.99080936866758,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 1"
+            }
+          ],
+          "transcript_segments_compressed": true,
+          "geolocation": {
+            "google_place_id": "ChIJDanBZdwEyIkRPkLsfwq5U0A",
+            "latitude": 39.32228794381515,
+            "longitude": -76.62281029091673,
+            "address": "2930 Remington Ave, Baltimore, MD 21211, USA",
+            "location_type": "car_rental"
+          },
+          "photos": [],
+          "audio_files": [
+            {
+              "id": "009c28d8-7faf-4df7-8a1e-42e2b49c90fc",
+              "uid": "u3GEN5IHkYf9WxEsvDoJ3z4kqxb2",
+              "conversation_id": "7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+              "chunk_timestamps": [
+                1776631158.918
+              ],
+              "provider": "gcp",
+              "started_at": "2026-04-19T20:39:18.918000+00:00",
+              "duration": 120.83325
+            }
+          ],
+          "private_cloud_sync_enabled": true,
+          "apps_results": [
+            {
+              "app_id": "01K89EAAY3XMJA0SJ7NSP6N5GT",
+              "content": "## Initial introduction\n- Aura described as an AI computer startup  \n- VC from BCG Ventures shows interest  \n- VC says Aura\u2019s product is \u201cpretty cool\u201d  \n\n## Offer to connect\n- VC shares contact: name is .code@forsale.com  \n- VC free this weekend for a meeting  \n- Suggests meeting at Kung Fu Tea bubble tea place  \n\n## Personal details\n- VC\u2019s name given as Vivian Banana  \n\n## Next steps\n- Founders should email .code@forsale.com  \n- Schedule weekend coffee/bubble tea chat  \n- Prepare startup details to discuss with Vivian"
+            }
+          ],
+          "suggested_summarization_apps": [
+            "01K89EAAY3XMJA0SJ7NSP6N5GT"
+          ],
+          "plugins_results": [],
+          "external_data": null,
+          "app_id": null,
+          "discarded": false,
+          "visibility": "private",
+          "starred": false,
+          "processing_memory_id": null,
+          "processing_conversation_id": null,
+          "status": "completed",
+          "is_locked": false,
+          "data_protection_level": "enhanced",
+          "folder_id": "fd96644d-7aff-4655-9db1-aab136e48ab7",
+          "call_id": null,
+          "folder_name": "Work"
+        }
+      },
+      "pagerank": 0.09460531270961753
+    },
+    {
+      "id": "person_ad479916d6324a8db5f89fa959cb2554",
+      "content": "Speaker 0",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:39:18.298848+00:00",
+      "metadata": {
+        "derived_from": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+        "kind": "person"
+      },
+      "pagerank": 0.02415423562256403
+    },
+    {
+      "id": "person_2258ec607e2f496f8f3e7c927d584735",
+      "content": "Speaker 1",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:39:18.298848+00:00",
+      "metadata": {
+        "derived_from": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+        "kind": "person"
+      },
+      "pagerank": 0.02415423562256403
+    },
+    {
+      "id": "task_73d74a8b3c72435e87f8f0bfcdd8f315",
+      "content": "Schedule coffee chat with Vivian Banana at Kung Fu Tea",
+      "node_type": "task_candidate",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:39:18.298848+00:00",
+      "metadata": {
+        "derived_from": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+        "kind": "action_item"
+      },
+      "pagerank": 0.027094195689887197
+    },
+    {
+      "id": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "content": "Several people introduce themselves in a casual setting. Chelsea, founder of Banana.ai, speaks with another founder of Lettuce.ai, who describes offering 'Lettuce as a service' and mentions being a molecular biology PhD from Cornell. Chelsea also identifies herself as a biomedical engineering major at Johns Hopkins. Another participant briefly comments that their idea might be questionable and asks to pass on sharing more, and the group reassures them there is no pressure.",
+      "node_type": "omi_conversation",
+      "source": "omi",
+      "timestamp": "2026-04-19 20:43:33.683059+00:00",
+      "metadata": {
+        "omi_id": "4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+        "client": "omi",
+        "people": [
+          "Chelsea",
+          "Speaker 0",
+          "Speaker 1",
+          "Speaker 2"
+        ],
+        "action_items": [],
+        "summary": "Several people introduce themselves in a casual setting. Chelsea, founder of Banana.ai, speaks with another founder of Lettuce.ai, who describes offering 'Lettuce as a service' and mentions being a molecular biology PhD from Cornell. Chelsea also identifies herself as a biomedical engineering major at Johns Hopkins. Another participant briefly comments that their idea might be questionable and asks to pass on sharing more, and the group reassures them there is no pressure.",
+        "transcript_text": "Hi. Yes. My name is Chelsea. I am a founder of the startup called Banana dot ai. Yeah. Wow. That's so cool. Also found her I my company is called Lettuce dot ai. And we do Lettuce as a service. We have multiple clients, and I'm actually a PhD of molecular biology at Cornell. Okay. Wow. Wow. Thank you for sharing. My name is like, name is Chelsea, and I am a BME major at Are you guys in the same group? Yeah. BME major at Johns Hopkins Tenivary. I might as well. It's like It's just ten second. I think our idea is kinda questionable. Can can we pass? Sure. Sure. But it's all no pressure. Okay. Thank you. It works.",
+        "event_kind": "conversation",
+        "raw_payload": {
+          "id": "4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+          "created_at": "2026-04-19T20:43:33.683059+00:00",
+          "started_at": "2026-04-19T20:43:36.023595+00:00",
+          "finished_at": "2026-04-19T20:44:37.343611+00:00",
+          "source": "omi",
+          "language": "en",
+          "structured": {
+            "title": "Startup founders informal introductions",
+            "overview": "Several people introduce themselves in a casual setting. Chelsea, founder of Banana.ai, speaks with another founder of Lettuce.ai, who describes offering 'Lettuce as a service' and mentions being a molecular biology PhD from Cornell. Chelsea also identifies herself as a biomedical engineering major at Johns Hopkins. Another participant briefly comments that their idea might be questionable and asks to pass on sharing more, and the group reassures them there is no pressure.",
+            "emoji": "\ud83e\udd1d",
+            "category": "entrepreneurship",
+            "action_items": [],
+            "events": []
+          },
+          "transcript_segments": [
+            {
+              "id": "50bc254e-1ddb-4819-947d-64ab2aed3788",
+              "text": "Hi. Yes. My name is Chelsea. I am a founder of the startup called Banana dot ai. Yeah. Wow. That's so cool. Also found her I my company is called Lettuce dot ai.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": "51d33794-37ec-45fb-b0f6-fdfe6a170f6a",
+              "start": 0.0,
+              "end": 15.68,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Chelsea"
+            },
+            {
+              "id": "3d7a8571-b702-4773-bbf5-06083501e8ab",
+              "text": "And we do Lettuce as a service. We have multiple clients, and I'm actually a PhD of molecular biology at Cornell. Okay. Wow. Wow. Thank you for sharing. My name is like, name is Chelsea, and I am a BME major at Are you guys in the same group? Yeah. BME major at Johns Hopkins Tenivary.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 16.282688,
+              "end": 42.384,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "3f8ae23f-d3a8-4a6f-86e6-796970170645",
+              "text": "I might as well.",
+              "speaker": "SPEAKER_1",
+              "speaker_id": 1,
+              "is_user": false,
+              "person_id": null,
+              "start": 43.248,
+              "end": 43.968,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 1"
+            },
+            {
+              "id": "15ea8232-fbcd-4ef0-9eff-adf4ba7bba7b",
+              "text": "It's like It's just ten second.",
+              "speaker": "SPEAKER_2",
+              "speaker_id": 2,
+              "is_user": false,
+              "person_id": null,
+              "start": 44.208,
+              "end": 44.927998,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 2"
+            },
+            {
+              "id": "09272228-20a4-4dc1-85a3-256ff2f34b3e",
+              "text": "I think our idea is kinda questionable. Can can we pass? Sure. Sure. But it's all no pressure. Okay. Thank you.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 48.37869,
+              "end": 55.637314,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "9537d774-8481-43fa-aa72-98b23e4955cf",
+              "text": "It works.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 59.392,
+              "end": 60.031998,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            }
+          ],
+          "transcript_segments_compressed": true,
+          "geolocation": {
+            "google_place_id": "ChIJDanBZdwEyIkRPkLsfwq5U0A",
+            "latitude": 39.32228794381515,
+            "longitude": -76.62281029091673,
+            "address": "2930 Remington Ave, Baltimore, MD 21211, USA",
+            "location_type": "car_rental"
+          },
+          "photos": [],
+          "audio_files": [
+            {
+              "id": "42247539-e42b-411b-85db-296282ebaf41",
+              "uid": "u3GEN5IHkYf9WxEsvDoJ3z4kqxb2",
+              "conversation_id": "4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+              "chunk_timestamps": [
+                1776631414.16
+              ],
+              "provider": "gcp",
+              "started_at": "2026-04-19T20:43:34.160000+00:00",
+              "duration": 121.516
+            }
+          ],
+          "private_cloud_sync_enabled": true,
+          "apps_results": [
+            {
+              "app_id": "01K89EAAY3XMJA0SJ7NSP6N5GT",
+              "content": "## Intros and Backgrounds\n- Chelsea founded startup Banana.ai  \n- Another founder runs Lettuce.ai, \u201clettuce as a service\u201d  \n- Second founder is a Cornell molecular biology PhD  \n\n## Student Details\n- Chelsea is a BME major at Johns Hopkins  \n- Another person also mentions being a BME major  \n\n## Idea Discussion\n- One group feels their idea is questionable  \n- They ask to pass on sharing idea  \n- Reassured there is no pressure to present  \n\n## Next Steps\n- No concrete next steps decided or assigned"
+            }
+          ],
+          "suggested_summarization_apps": [
+            "01K89EAAY3XMJA0SJ7NSP6N5GT"
+          ],
+          "plugins_results": [],
+          "external_data": null,
+          "app_id": null,
+          "discarded": false,
+          "visibility": "private",
+          "starred": false,
+          "processing_memory_id": null,
+          "processing_conversation_id": null,
+          "status": "completed",
+          "is_locked": false,
+          "data_protection_level": "enhanced",
+          "folder_id": "fd96644d-7aff-4655-9db1-aab136e48ab7",
+          "call_id": null,
+          "folder_name": "Work"
+        }
+      },
+      "pagerank": 0.09361573495455253
+    },
+    {
+      "id": "person_fcee965976b74ad7af06462fadec710b",
+      "content": "Chelsea",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:43:33.683059+00:00",
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+        "kind": "person"
+      },
+      "pagerank": 0.01904789237389628
+    },
+    {
+      "id": "person_d5dad2aabab84dfcab7cb7754b88f37d",
+      "content": "Speaker 0",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:43:33.683059+00:00",
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+        "kind": "person"
+      },
+      "pagerank": 0.01904789237389628
+    },
+    {
+      "id": "person_b738e394b9a94261a5cf8f7905267108",
+      "content": "Speaker 1",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:43:33.683059+00:00",
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+        "kind": "person"
+      },
+      "pagerank": 0.01904789237389628
+    },
+    {
+      "id": "person_66830a52638f4879909a43795539cfcb",
+      "content": "Speaker 2",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:43:33.683059+00:00",
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+        "kind": "person"
+      },
+      "pagerank": 0.01904789237389628
+    },
+    {
+      "id": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "content": "Chelsea and Wendy meet near Hopkins, introduce themselves, and realize they both attend the same school. Chelsea mentions she is building a startup called Banana.ai and recently raised $500K in funding. Wendy expresses interest in startups and asks for help finding funding connections. Chelsea recommends a contact named Nathan, describes him as intimidating, and provides his email address (nathan@waterproof.com) as a potential resource.",
+      "node_type": "omi_conversation",
+      "source": "omi",
+      "timestamp": "2026-04-19 20:44:39.690625+00:00",
+      "metadata": {
+        "omi_id": "077a980e-3f46-4310-80ba-83b918b1ae8e",
+        "client": "omi",
+        "people": [
+          "Chelsea",
+          "Speaker 0"
+        ],
+        "action_items": [
+          "Email Nathan at nathan@waterproof.com about startup funding advice"
+        ],
+        "summary": "Chelsea and Wendy meet near Hopkins, introduce themselves, and realize they both attend the same school. Chelsea mentions she is building a startup called Banana.ai and recently raised $500K in funding. Wendy expresses interest in startups and asks for help finding funding connections. Chelsea recommends a contact named Nathan, describes him as intimidating, and provides his email address (nathan@waterproof.com) as a potential resource.",
+        "transcript_text": "Oh my god. Molly tea is so good. Right? Yes. Oh my god. Wait. What's your name? Oh, my name is Chelsea. Nice. To meet you. Oh, yeah. My name is Wendy. Nice to meet you. Oh, what you're doing around here? Do you go to school nearby? Oh, yeah. I go to school nearby, like, at Hopkins. No way. Me too. What year are you? Oh, I'm I'm a second year. Oh, yes. Well, how I'm I'm actually building a start up called Banana dot ai. And recently, we raised $500 funding. Oh, so right now, what is happening is it? Oh, actually, like, so that I'm also interested in start ups but, like, I haven't been able to get funding. Do you have, like, any people that you would like point me towards that you think might help me? Yeah. There's actually this person named Nathan that is very cool. So you should contact this guy He's very scary, though, so you might want to keep the Oh, wow. I I wanna meet this Nathan guy. What is this he what's this email? Oh, yeah. His email is at Nathan at waterproof dot com.",
+        "event_kind": "conversation",
+        "raw_payload": {
+          "id": "077a980e-3f46-4310-80ba-83b918b1ae8e",
+          "created_at": "2026-04-19T20:44:39.690625+00:00",
+          "started_at": "2026-04-19T20:46:20.478003+00:00",
+          "finished_at": "2026-04-19T20:47:45.113193+00:00",
+          "source": "omi",
+          "language": "en",
+          "structured": {
+            "title": "Networking about startup funding at Hopkins",
+            "overview": "Chelsea and Wendy meet near Hopkins, introduce themselves, and realize they both attend the same school. Chelsea mentions she is building a startup called Banana.ai and recently raised $500K in funding. Wendy expresses interest in startups and asks for help finding funding connections. Chelsea recommends a contact named Nathan, describes him as intimidating, and provides his email address (nathan@waterproof.com) as a potential resource.",
+            "emoji": "\ud83e\udd1d",
+            "category": "entrepreneurship",
+            "action_items": [
+              {
+                "description": "Email Nathan at nathan@waterproof.com about startup funding advice",
+                "completed": false,
+                "created_at": "2026-04-19T20:47:50.630628+00:00",
+                "updated_at": null,
+                "due_at": null,
+                "completed_at": null,
+                "conversation_id": null
+              }
+            ],
+            "events": []
+          },
+          "transcript_segments": [
+            {
+              "id": "eccbe7c5-e38d-45a0-b5b1-f4bd3943f781",
+              "text": "Oh my god. Molly tea is so good. Right? Yes. Oh my god. Wait. What's your name? Oh, my name is Chelsea. Nice. To meet you. Oh, yeah. My name is Wendy. Nice to meet you. Oh, what you're doing around here?",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": "51d33794-37ec-45fb-b0f6-fdfe6a170f6a",
+              "start": -1.907348634588857e-08,
+              "end": 15.462687980926514,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Chelsea"
+            },
+            {
+              "id": "5ed19f9f-0c96-45c3-a029-c4759c32fc4f",
+              "text": "Do you go to school nearby? Oh, yeah. I go to school nearby, like, at Hopkins. No way. Me too. What year are you? Oh, I'm I'm a second year. Oh, yes. Well, how I'm I'm actually building a start up called Banana dot ai.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 15.952687980926513,
+              "end": 35.25331498092651,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "fdaaf5c8-fb10-4e2f-a8b4-d9e3e686aff1",
+              "text": "And recently, we raised $500 funding. Oh, so right now, what is happening is it? Oh, actually, like, so that I'm also interested in start ups but, like, I haven't been able to get funding. Do you have, like, any people that you would like point me towards that you think might help me? Yeah.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 35.941313980926516,
+              "end": 56.20999998092651,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "98d686c6-1d79-4b9b-9001-341ad5cde309",
+              "text": "There's actually this person named Nathan that is very cool. So you should contact this guy He's very scary, though, so you might want to keep the",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 56.53999998092652,
+              "end": 71.19467998092651,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            },
+            {
+              "id": "ef717fa8-fdad-44ee-b9b7-76764eb3f6f9",
+              "text": "Oh, wow. I I wanna meet this Nathan guy. What is this he what's this email? Oh, yeah. His email is at Nathan at waterproof dot com.",
+              "speaker": "SPEAKER_0",
+              "speaker_id": 0,
+              "is_user": false,
+              "person_id": null,
+              "start": 75.61599998092652,
+              "end": 84.2453099809265,
+              "translations": [],
+              "speech_profile_processed": true,
+              "stt_provider": null,
+              "speaker_name": "Speaker 0"
+            }
+          ],
+          "transcript_segments_compressed": true,
+          "geolocation": {
+            "google_place_id": "ChIJDanBZdwEyIkRPkLsfwq5U0A",
+            "latitude": 39.32228794381515,
+            "longitude": -76.62281029091673,
+            "address": "2930 Remington Ave, Baltimore, MD 21211, USA",
+            "location_type": "car_rental"
+          },
+          "photos": [],
+          "audio_files": [
+            {
+              "id": "8ca5960b-db4c-4cb2-a5da-8b99f41bdae0",
+              "uid": "u3GEN5IHkYf9WxEsvDoJ3z4kqxb2",
+              "conversation_id": "077a980e-3f46-4310-80ba-83b918b1ae8e",
+              "chunk_timestamps": [
+                1776631578.225
+              ],
+              "provider": "gcp",
+              "started_at": "2026-04-19T20:46:18.225000+00:00",
+              "duration": 120.150625
+            }
+          ],
+          "private_cloud_sync_enabled": true,
+          "apps_results": [
+            {
+              "app_id": "01K89EAAY3XMJA0SJ7NSP6N5GT",
+              "content": "## Introductions  \n- Chelsea and Wendy meet, share names  \n- Both enjoy \"Molly tea\"  \n- They ask what each is doing nearby  \n\n## School Details  \n- Both attend Hopkins  \n- Chelsea is a second-year student  \n\n## Startup and Funding  \n- Chelsea building startup Banana.ai  \n- Recently raised $500 in funding  \n\n## Networking and Contact  \n- Wendy wants startup funding help  \n- Chelsea recommends a person named Nathan  \n- Nathan\u2019s email: nathan@waterproof.com  \n\n## Next Steps  \n- Wendy to contact Nathan for funding advice  \n- Potential future meeting with Nathan"
+            }
+          ],
+          "suggested_summarization_apps": [
+            "01K89EAAY3XMJA0SJ7NSP6N5GT"
+          ],
+          "plugins_results": [],
+          "external_data": null,
+          "app_id": null,
+          "discarded": false,
+          "visibility": "private",
+          "starred": false,
+          "processing_memory_id": null,
+          "processing_conversation_id": null,
+          "status": "completed",
+          "is_locked": false,
+          "data_protection_level": "enhanced",
+          "folder_id": "fd96644d-7aff-4655-9db1-aab136e48ab7",
+          "call_id": null,
+          "folder_name": "Work"
+        }
+      },
+      "pagerank": 0.05561013658738916
+    },
+    {
+      "id": "person_92052fd99a524f99bc7ac769094c3f20",
+      "content": "Chelsea",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:44:39.690625+00:00",
+      "metadata": {
+        "derived_from": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+        "kind": "person"
+      },
+      "pagerank": 0.014337923156322332
+    },
+    {
+      "id": "person_0e76afde5a2a473bbb3cfd36d878207b",
+      "content": "Speaker 0",
+      "node_type": "derived_fact",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:44:39.690625+00:00",
+      "metadata": {
+        "derived_from": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+        "kind": "person"
+      },
+      "pagerank": 0.014337923156322332
+    },
+    {
+      "id": "task_aa5e3d8beea341bfbd08f6008d1735b4",
+      "content": "Email Nathan at nathan@waterproof.com about startup funding advice",
+      "node_type": "task_candidate",
+      "source": "derived",
+      "timestamp": "2026-04-19 20:44:39.690625+00:00",
+      "metadata": {
+        "derived_from": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+        "kind": "action_item"
+      },
+      "pagerank": 0.014337923156322332
+    }
+  ],
+  "edges": [
+    {
+      "id": "mentions_person_f43dd675015cedd2",
+      "source": "omi_mem-1",
+      "target": "person_ac224061fa4146eb9e8bf58132b7212e",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "omi_mem-1"
+      }
+    },
+    {
+      "id": "contains_task_a9610a1065892ba1",
+      "source": "omi_mem-1",
+      "target": "task_4ea976d38aef4bff9396325faab4277a",
+      "edge_type": "contains_task",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "omi_mem-1"
+      }
+    },
+    {
+      "id": "temporal_5d848959c95a97bc",
+      "source": "omi_mem-1",
+      "target": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "edge_type": "temporal",
+      "weight": 1.0,
+      "metadata": {}
+    },
+    {
+      "id": "derived_from_d8dc35bb60a5d280",
+      "source": "person_ac224061fa4146eb9e8bf58132b7212e",
+      "target": "omi_mem-1",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "omi_mem-1"
+      }
+    },
+    {
+      "id": "derived_from_c013e3a3456867f5",
+      "source": "task_4ea976d38aef4bff9396325faab4277a",
+      "target": "omi_mem-1",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "omi_mem-1"
+      }
+    },
+    {
+      "id": "mentions_person_22072887cb22ba0f",
+      "source": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "target": "person_29ec217e276044279f336b928e84bdb2",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_a8252334-711e-423d-9119-57565b00e46a"
+      }
+    },
+    {
+      "id": "contains_task_60cf85c121492b46",
+      "source": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "target": "task_69bce4d7d7fd44738e7e232ad56c2535",
+      "edge_type": "contains_task",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_a8252334-711e-423d-9119-57565b00e46a"
+      }
+    },
+    {
+      "id": "contains_task_658308a78a57079a",
+      "source": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "target": "task_4cdf3081e7f6461d931f6f3e5f57e067",
+      "edge_type": "contains_task",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_a8252334-711e-423d-9119-57565b00e46a"
+      }
+    },
+    {
+      "id": "temporal_2a5252772e17fcb2",
+      "source": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "target": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+      "edge_type": "temporal",
+      "weight": 1.0,
+      "metadata": {}
+    },
+    {
+      "id": "derived_from_5b09b721a500ae57",
+      "source": "person_29ec217e276044279f336b928e84bdb2",
+      "target": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_a8252334-711e-423d-9119-57565b00e46a"
+      }
+    },
+    {
+      "id": "derived_from_626b6577c2eb6ac3",
+      "source": "task_69bce4d7d7fd44738e7e232ad56c2535",
+      "target": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_a8252334-711e-423d-9119-57565b00e46a"
+      }
+    },
+    {
+      "id": "derived_from_aeceb5d7ae96b078",
+      "source": "task_4cdf3081e7f6461d931f6f3e5f57e067",
+      "target": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_a8252334-711e-423d-9119-57565b00e46a"
+      }
+    },
+    {
+      "id": "semantic_d463229d3781ea05",
+      "source": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+      "target": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "edge_type": "semantic",
+      "weight": 0.4028,
+      "metadata": {
+        "similarity": 0.4028
+      }
+    },
+    {
+      "id": "semantic_03b8ed04401ab184",
+      "source": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+      "target": "task_4cdf3081e7f6461d931f6f3e5f57e067",
+      "edge_type": "semantic",
+      "weight": 0.3557,
+      "metadata": {
+        "similarity": 0.3557
+      }
+    },
+    {
+      "id": "mentions_person_6f12858af9022899",
+      "source": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+      "target": "person_9f7340c337324e379443407971b8eb74",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f"
+      }
+    },
+    {
+      "id": "mentions_person_175182cfa6d8998e",
+      "source": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+      "target": "person_56b1338c58fd4218b44990d30831f80e",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f"
+      }
+    },
+    {
+      "id": "mentions_person_bd2141e31be14f2a",
+      "source": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+      "target": "person_4eef801e5375426c96e10f34e6ab4525",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f"
+      }
+    },
+    {
+      "id": "temporal_c5d3f1eeb716d01c",
+      "source": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+      "target": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+      "edge_type": "temporal",
+      "weight": 1.0,
+      "metadata": {}
+    },
+    {
+      "id": "derived_from_4b134cd4c171441a",
+      "source": "person_9f7340c337324e379443407971b8eb74",
+      "target": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f"
+      }
+    },
+    {
+      "id": "derived_from_19850dced6ea64a1",
+      "source": "person_56b1338c58fd4218b44990d30831f80e",
+      "target": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f"
+      }
+    },
+    {
+      "id": "derived_from_14d263d3c53369ac",
+      "source": "person_4eef801e5375426c96e10f34e6ab4525",
+      "target": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_9fa17f89-9734-4dd0-9b9d-16cc0426965f"
+      }
+    },
+    {
+      "id": "semantic_3661b10a75c3554a",
+      "source": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+      "target": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "edge_type": "semantic",
+      "weight": 0.4912,
+      "metadata": {
+        "similarity": 0.4912
+      }
+    },
+    {
+      "id": "mentions_person_18b208faa67b5657",
+      "source": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+      "target": "person_ad479916d6324a8db5f89fa959cb2554",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60"
+      }
+    },
+    {
+      "id": "mentions_person_3cd3f64135c9871e",
+      "source": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+      "target": "person_2258ec607e2f496f8f3e7c927d584735",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60"
+      }
+    },
+    {
+      "id": "contains_task_aed03fb8865af6b3",
+      "source": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+      "target": "task_73d74a8b3c72435e87f8f0bfcdd8f315",
+      "edge_type": "contains_task",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60"
+      }
+    },
+    {
+      "id": "temporal_428d5d24d6bcbe22",
+      "source": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+      "target": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "edge_type": "temporal",
+      "weight": 1.0,
+      "metadata": {}
+    },
+    {
+      "id": "derived_from_88efb430c6666811",
+      "source": "person_ad479916d6324a8db5f89fa959cb2554",
+      "target": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60"
+      }
+    },
+    {
+      "id": "derived_from_18c8fb1ba508b180",
+      "source": "person_2258ec607e2f496f8f3e7c927d584735",
+      "target": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60"
+      }
+    },
+    {
+      "id": "derived_from_210e3444daaaff2d",
+      "source": "task_73d74a8b3c72435e87f8f0bfcdd8f315",
+      "target": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60"
+      }
+    },
+    {
+      "id": "semantic_116c8bcd7bd8f290",
+      "source": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "target": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "edge_type": "semantic",
+      "weight": 0.5,
+      "metadata": {
+        "similarity": 0.5
+      }
+    },
+    {
+      "id": "semantic_cf3d9c7e261f8d80",
+      "source": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "target": "task_69bce4d7d7fd44738e7e232ad56c2535",
+      "edge_type": "semantic",
+      "weight": 0.3638,
+      "metadata": {
+        "similarity": 0.3638
+      }
+    },
+    {
+      "id": "semantic_0f54f4c89e2bfa7d",
+      "source": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "target": "conv_7b865aa6-aebd-43b9-a243-09c1ff6bac60",
+      "edge_type": "semantic",
+      "weight": 0.3541,
+      "metadata": {
+        "similarity": 0.3541
+      }
+    },
+    {
+      "id": "mentions_person_74fe972776c13b64",
+      "source": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "target": "person_fcee965976b74ad7af06462fadec710b",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f"
+      }
+    },
+    {
+      "id": "mentions_person_1adf2666f2db84ea",
+      "source": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "target": "person_d5dad2aabab84dfcab7cb7754b88f37d",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f"
+      }
+    },
+    {
+      "id": "mentions_person_53e699644a0d6f92",
+      "source": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "target": "person_b738e394b9a94261a5cf8f7905267108",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f"
+      }
+    },
+    {
+      "id": "mentions_person_6c16f89b2b576da7",
+      "source": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "target": "person_66830a52638f4879909a43795539cfcb",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f"
+      }
+    },
+    {
+      "id": "temporal_f697c6516c9270ff",
+      "source": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "target": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "edge_type": "temporal",
+      "weight": 1.0,
+      "metadata": {}
+    },
+    {
+      "id": "derived_from_1739e135e52b6412",
+      "source": "person_fcee965976b74ad7af06462fadec710b",
+      "target": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f"
+      }
+    },
+    {
+      "id": "derived_from_f6648b9da2582641",
+      "source": "person_d5dad2aabab84dfcab7cb7754b88f37d",
+      "target": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f"
+      }
+    },
+    {
+      "id": "derived_from_9558a234da82d694",
+      "source": "person_b738e394b9a94261a5cf8f7905267108",
+      "target": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f"
+      }
+    },
+    {
+      "id": "derived_from_cfc617057550557f",
+      "source": "person_66830a52638f4879909a43795539cfcb",
+      "target": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f"
+      }
+    },
+    {
+      "id": "semantic_d20359407851193d",
+      "source": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "target": "conv_4382d4a1-0ce4-4d14-a177-0f1008fa8f2f",
+      "edge_type": "semantic",
+      "weight": 0.5812,
+      "metadata": {
+        "similarity": 0.5812
+      }
+    },
+    {
+      "id": "semantic_7bf047bdf0451b9d",
+      "source": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "target": "task_4cdf3081e7f6461d931f6f3e5f57e067",
+      "edge_type": "semantic",
+      "weight": 0.493,
+      "metadata": {
+        "similarity": 0.493
+      }
+    },
+    {
+      "id": "semantic_3585615f20d0fa29",
+      "source": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "target": "conv_a8252334-711e-423d-9119-57565b00e46a",
+      "edge_type": "semantic",
+      "weight": 0.4714,
+      "metadata": {
+        "similarity": 0.4714
+      }
+    },
+    {
+      "id": "semantic_881504e5f795a8e0",
+      "source": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "target": "task_69bce4d7d7fd44738e7e232ad56c2535",
+      "edge_type": "semantic",
+      "weight": 0.468,
+      "metadata": {
+        "similarity": 0.468
+      }
+    },
+    {
+      "id": "semantic_27b051ee8f63fe81",
+      "source": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "target": "person_56b1338c58fd4218b44990d30831f80e",
+      "edge_type": "semantic",
+      "weight": 0.4671,
+      "metadata": {
+        "similarity": 0.4671
+      }
+    },
+    {
+      "id": "semantic_41039a4a3aec84e8",
+      "source": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "target": "task_73d74a8b3c72435e87f8f0bfcdd8f315",
+      "edge_type": "semantic",
+      "weight": 0.3635,
+      "metadata": {
+        "similarity": 0.3635
+      }
+    },
+    {
+      "id": "mentions_person_3b0e1bd2ddb04627",
+      "source": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "target": "person_92052fd99a524f99bc7ac769094c3f20",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e"
+      }
+    },
+    {
+      "id": "mentions_person_03e0db89707b0e1c",
+      "source": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "target": "person_0e76afde5a2a473bbb3cfd36d878207b",
+      "edge_type": "mentions_person",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e"
+      }
+    },
+    {
+      "id": "contains_task_225a6c5ea76ac18d",
+      "source": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "target": "task_aa5e3d8beea341bfbd08f6008d1735b4",
+      "edge_type": "contains_task",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e"
+      }
+    },
+    {
+      "id": "derived_from_2a002a2969842599",
+      "source": "person_92052fd99a524f99bc7ac769094c3f20",
+      "target": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e"
+      }
+    },
+    {
+      "id": "derived_from_e61dbf14f66abdf5",
+      "source": "person_0e76afde5a2a473bbb3cfd36d878207b",
+      "target": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e"
+      }
+    },
+    {
+      "id": "derived_from_0162e09b5fa05646",
+      "source": "task_aa5e3d8beea341bfbd08f6008d1735b4",
+      "target": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e",
+      "edge_type": "derived_from",
+      "weight": 1.0,
+      "metadata": {
+        "derived_from": "conv_077a980e-3f46-4310-80ba-83b918b1ae8e"
+      }
+    }
+  ]
+}
