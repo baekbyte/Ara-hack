@@ -1,86 +1,92 @@
-"""Quick smoke test: add dummy nodes/edges, verify graph + ingest pipeline."""
+"""Quick smoke test for the Memory Palace ingestion + retrieval pipeline."""
+
+from __future__ import annotations
+
 import os
-os.environ["MEMORY_PALACE_DB"] = "test_memory_palace.db"
+import tempfile
+from pathlib import Path
 
-# Use a test DB to avoid polluting the real one
+os.environ["MEMORY_PALACE_DB"] = str(Path(tempfile.gettempdir()) / "test_memory_palace.db")
+
+import db as db_module
 import graph as graph_module
-graph_module.memory_graph = graph_module.MemoryGraph("test_memory_palace.db")
-
 import ingest
-ingest.memory_graph = graph_module.memory_graph
-ingest._previous_node_id = None
+import retrieval
 
-def separator(title):
-    print(f"\n{'='*50}")
+
+def separator(title: str) -> None:
+    print(f"\n{'=' * 52}")
     print(f"  {title}")
-    print('='*50)
+    print("=" * 52)
 
-# ── 1. Ingest Omi memories ──────────────────────────────
+
+db_path = Path(os.environ["MEMORY_PALACE_DB"])
+if db_path.exists():
+    db_path.unlink()
+
+db_module.sqlite_store = db_module.SQLiteStore(str(db_path))
+graph_module.memory_graph = graph_module.MemoryGraph(store=db_module.sqlite_store)
+ingest.memory_graph = graph_module.memory_graph
+retrieval.memory_graph = graph_module.memory_graph
+
+
 separator("Ingesting Omi memories")
-
 omi_payloads = [
-    {"text": "Had a great meeting with the team about the new product launch strategy"},
-    {"transcript": "Discussed machine learning models for recommendation systems with Alice"},
-    {"structured": {"overview": "Planning a trip to Tokyo in the summer"}},
-    {"text": "Reviewed the quarterly budget and identified cost-saving opportunities"},
-    {"text": "Talked about machine learning and AI trends at the conference"},
+    {
+        "id": "mem-1",
+        "summary": "Discussed the Ara and Omi integration plan for the hackathon demo.",
+        "action_items": ["Wire FastAPI endpoints", "Deploy Ara automation"],
+        "people": ["Alice", "Bob"],
+    },
+    {
+        "id": "mem-2",
+        "transcript": "We were debugging the graph visualization and talking about recent transcript retrieval.",
+        "people": ["Charlie"],
+        "client": "desktop",
+    },
 ]
-
-omi_nodes = []
 for payload in omi_payloads:
     node = ingest.ingest_omi_memory(payload)
-    omi_nodes.append(node)
-    print(f"[omi]  {node.id[:8]}...  \"{node.content[:60]}\"")
+    print(f"[omi] {node.id[:20]:20s} {node.content[:65]}")
 
-# ── 2. Ingest Ara events ────────────────────────────────
-separator("Ingesting Ara events")
 
-ara_events = [
-    ("web_search", "machine learning trends 2024", "Found 5 results about LLMs and diffusion models"),
-    ("web_search", "Tokyo travel tips", "Best time to visit is spring (March-May) for cherry blossoms"),
-    ("recall_context", "product launch", "Found 2 related memories about team meeting and strategy"),
+separator("Ingesting transcript chunks")
+transcript_payloads = [
+    {"session_id": "sess-1", "chunk_id": "1", "text": "Need the recent context endpoint for Ara.", "speaker": "user"},
+    {"session_id": "sess-1", "chunk_id": "2", "text": "Also log important Ara actions back into the graph.", "speaker": "assistant"},
 ]
+for payload in transcript_payloads:
+    node = ingest.ingest_omi_transcript(payload)
+    print(f"[transcript] {node.id[:20]:20s} {node.content[:65]}")
 
-ara_nodes = []
-for event_type, inp, out in ara_events:
-    node = ingest.ingest_ara_event(event_type, inp, out)
-    ara_nodes.append(node)
-    print(f"[ara]  {node.id[:8]}...  \"{node.content[:60]}\"")
 
-# ── 3. Graph stats ──────────────────────────────────────
+separator("Ingesting Ara action")
+ara_node = ingest.ingest_ara_event(
+    {
+        "action_type": "ara_message",
+        "content": "Outlined the Memory Palace integration plan and next implementation steps.",
+        "metadata": {"tool_name": "planner"},
+    }
+)
+print(f"[ara] {ara_node.id[:20]:20s} {ara_node.content[:65]}")
+
+
+separator("Context pack")
+context = retrieval.build_context_pack("What was I just working on?", limit=5)
+print(context["summary"])
+print(f"similar_memories={len(context['similar_memories'])}")
+print(f"recent_transcript_chunks={len(context['recent_transcript_chunks'])}")
+print(f"related_ara_actions={len(context['related_ara_actions'])}")
+
+
 separator("Graph stats")
-all_nodes = graph_module.memory_graph.get_all_nodes()
-all_edges = graph_module.memory_graph.get_all_edges()
-print(f"Nodes : {len(all_nodes)}")
-print(f"Edges : {len(all_edges)}")
+stats = graph_module.memory_graph.stats()
+for key, value in stats.items():
+    print(f"{key}: {value}")
 
-edge_types = {}
-for e in all_edges:
-    edge_types[e.edge_type] = edge_types.get(e.edge_type, 0) + 1
-for etype, count in edge_types.items():
-    print(f"  {etype:10s}: {count}")
 
-# ── 4. PageRank ─────────────────────────────────────────
-separator("PageRank (top 5)")
-pr = graph_module.memory_graph.compute_pagerank()
-top = sorted(pr.items(), key=lambda x: x[1], reverse=True)[:5]
-for node_id, score in top:
-    node = graph_module.memory_graph.get_node(node_id)
-    print(f"  {score:.4f}  [{node.source:3s}]  \"{node.content[:55]}\"")
-
-# ── 5. Neighbor search ──────────────────────────────────
-separator("Neighbor search: 'machine learning AI'")
-query_embedding = ingest.embed("machine learning AI")
-neighbors = ingest.find_neighbors(query_embedding, k=5)
-if neighbors:
-    for node, score in neighbors:
-        print(f"  {score:.4f}  [{node.source:3s}]  \"{node.content[:55]}\"")
-else:
-    print("  No neighbors above threshold 0.7")
-
-# ── 6. Cleanup ──────────────────────────────────────────
 separator("Cleanup")
-import os
-os.remove("test_memory_palace.db")
-print("Removed test_memory_palace.db")
-print("\nAll tests passed!")
+if db_path.exists():
+    db_path.unlink()
+print("Removed test database")
+print("Smoke test passed")

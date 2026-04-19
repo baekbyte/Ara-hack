@@ -1,12 +1,30 @@
+"""FastAPI bridge for Omi ingestion, graph retrieval, and Ara logging."""
+
+from __future__ import annotations
+
+import json
+import logging
+from typing import Any
+
 import uvicorn
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Header, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
 
-from ingest import ingest_omi_memory, ingest_ara_event, embed, find_neighbors
+from config import get_settings
 from graph import memory_graph
+from ingest import ingest_ara_event, ingest_omi_conversation, ingest_omi_day_summary, ingest_omi_memory, ingest_omi_transcript
+from models import AraActionRequest, GraphResponse, HealthResponse, IngestResponse, model_dump_compat
+from retrieval import build_context_pack, build_recent_context_pack, serialize_edge, serialize_node
 
-app = FastAPI()
+
+settings = get_settings()
+app = FastAPI(title="Memory Palace API", version="0.1.0")
+logger = logging.getLogger("memory_palace.webhooks")
+if not logger.handlers:
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
+    logger.addHandler(handler)
+logger.setLevel(logging.INFO)
 
 app.add_middleware(
     CORSMiddleware,
@@ -17,64 +35,158 @@ app.add_middleware(
 )
 
 
-class AraEvent(BaseModel):
-    event_type: str
-    input: str
-    output: str
+def _verify_token(x_api_token: str | None) -> None:
+    """Best-effort token verification for bridge calls."""
+    expected = settings.api_token
+    if not expected or expected == "dev-token":
+        return
+    if x_api_token != expected:
+        raise HTTPException(status_code=401, detail="invalid api token")
 
 
-@app.post("/webhook/omi")
-async def webhook_omi(payload: dict):
+def _preview_payload(payload: dict[str, Any], *, max_len: int = 240) -> str:
+    try:
+        preview = json.dumps(payload, default=str)
+    except TypeError:
+        preview = str(payload)
+    preview = preview.replace("\n", " ")
+    if len(preview) > max_len:
+        return preview[: max_len - 3] + "..."
+    return preview
+
+
+def _log_webhook(name: str, payload: dict[str, Any]) -> None:
+    logger.info(
+        "webhook_received endpoint=%s keys=%s preview=%s",
+        name,
+        sorted(payload.keys()),
+        _preview_payload(payload),
+    )
+
+
+@app.post("/webhook/omi/memory", response_model=IngestResponse)
+async def webhook_omi_memory(
+    payload: dict[str, Any],
+    x_api_token: str | None = Header(default=None),
+) -> IngestResponse:
+    _verify_token(x_api_token)
+    _log_webhook("omi_memory", payload)
     node = ingest_omi_memory(payload)
-    return {"status": "ok", "node_id": node.id}
+    return IngestResponse(ok=True, node_id=node.id)
 
 
-@app.post("/webhook/ara")
-async def webhook_ara(event: AraEvent):
-    node = ingest_ara_event(event.event_type, event.input, event.output)
-    return {"status": "ok", "node_id": node.id}
+@app.post("/webhook/omi/conversation", response_model=IngestResponse)
+async def webhook_omi_conversation(
+    payload: dict[str, Any],
+    x_api_token: str | None = Header(default=None),
+) -> IngestResponse:
+    _verify_token(x_api_token)
+    _log_webhook("omi_conversation", payload)
+    node = ingest_omi_conversation(payload)
+    return IngestResponse(ok=True, node_id=node.id)
 
 
-@app.get("/graph")
-async def get_graph():
-    pagerank = memory_graph.compute_pagerank()
-    nodes = [
+@app.get("/webhook/omi/conversation")
+async def webhook_omi_conversation_status() -> dict[str, Any]:
+    return {"ok": True, "endpoint": "omi_conversation", "method": "POST"}
+
+
+@app.post("/webhook/omi/day-summary", response_model=IngestResponse)
+async def webhook_omi_day_summary(
+    payload: dict[str, Any],
+    x_api_token: str | None = Header(default=None),
+) -> IngestResponse:
+    _verify_token(x_api_token)
+    _log_webhook("omi_day_summary", payload)
+    node = ingest_omi_day_summary(payload)
+    return IngestResponse(ok=True, node_id=node.id)
+
+
+@app.get("/webhook/omi/day-summary")
+async def webhook_omi_day_summary_status() -> dict[str, Any]:
+    return {"ok": True, "endpoint": "omi_day_summary", "method": "POST"}
+
+
+@app.post("/webhook/omi/transcript", response_model=IngestResponse)
+async def webhook_omi_transcript(
+    payload: dict[str, Any],
+    x_api_token: str | None = Header(default=None),
+) -> IngestResponse:
+    _verify_token(x_api_token)
+    _log_webhook("omi_transcript", payload)
+    node = ingest_omi_transcript(payload)
+    return IngestResponse(ok=True, node_id=node.id)
+
+
+@app.post("/webhook/ara/action", response_model=IngestResponse)
+async def webhook_ara_action(
+    event: AraActionRequest,
+    x_api_token: str | None = Header(default=None),
+) -> IngestResponse:
+    _verify_token(x_api_token)
+    payload = model_dump_compat(event)
+    _log_webhook("ara_action", payload)
+    node = ingest_ara_event(payload)
+    return IngestResponse(ok=True, node_id=node.id)
+
+
+@app.post("/webhook/omi", response_model=IngestResponse)
+async def webhook_omi_legacy(payload: dict[str, Any]) -> IngestResponse:
+    """Backward-compatible alias for early hackathon wiring."""
+    _log_webhook("omi_legacy", payload)
+    node = ingest_omi_memory(payload)
+    return IngestResponse(ok=True, node_id=node.id)
+
+
+@app.post("/webhook/ara", response_model=IngestResponse)
+async def webhook_ara_legacy(event: dict[str, Any]) -> IngestResponse:
+    """Backward-compatible alias for the original stub contract."""
+    _log_webhook("ara_legacy", event)
+    node = ingest_ara_event(
         {
-            "id": node.id,
-            "content": node.content,
-            "node_type": node.node_type,
-            "source": node.source,
-            "timestamp": node.timestamp,
-            "metadata": node.metadata,
-            "pagerank": pagerank.get(node.id, 0.0),
+            "action_type": event.get("event_type", "legacy_ara_event"),
+            "content": str(event.get("output") or event.get("content") or ""),
+            "metadata": {
+                "input": event.get("input"),
+                "output": event.get("output"),
+            },
         }
-        for node in memory_graph.get_all_nodes()
-    ]
-    edges = [
-        {
-            "source_id": edge.source_id,
-            "target_id": edge.target_id,
-            "edge_type": edge.edge_type,
-            "weight": edge.weight,
-        }
-        for edge in memory_graph.get_all_edges()
-    ]
-    return {"nodes": nodes, "edges": edges}
+    )
+    return IngestResponse(ok=True, node_id=node.id)
 
 
 @app.get("/query")
-async def query(q: str = Query(...)):
-    embedding = embed(q)
-    neighbors = find_neighbors(embedding, k=10)
-    results = [{"node": {
-        "id": node.id,
-        "content": node.content,
-        "node_type": node.node_type,
-        "source": node.source,
-        "timestamp": node.timestamp,
-        "metadata": node.metadata,
-    }, "score": score} for node, score in neighbors]
-    return {"results": results}
+async def query_memory(
+    q: str = Query(..., min_length=1),
+    k: int = Query(default=settings.semantic_top_k, ge=1, le=25),
+    x_api_token: str | None = Header(default=None),
+) -> dict[str, Any]:
+    _verify_token(x_api_token)
+    return build_context_pack(q, limit=k)
+
+
+@app.get("/context/recent")
+async def recent_context(
+    hours: int = Query(default=6, ge=1, le=168),
+    limit: int = Query(default=10, ge=1, le=50),
+    x_api_token: str | None = Header(default=None),
+) -> dict[str, Any]:
+    _verify_token(x_api_token)
+    return build_recent_context_pack(hours=hours, limit=limit)
+
+
+@app.get("/graph", response_model=GraphResponse)
+async def get_graph() -> GraphResponse:
+    pagerank = memory_graph.compute_pagerank()
+    nodes = [serialize_node(node, pagerank=pagerank.get(node.id, 0.0)) for node in memory_graph.get_all_nodes()]
+    edges = [serialize_edge(edge) for edge in memory_graph.get_all_edges()]
+    return GraphResponse(nodes=nodes, edges=edges)
+
+
+@app.get("/health", response_model=HealthResponse)
+async def health() -> HealthResponse:
+    stats = memory_graph.stats()
+    return HealthResponse(ok=True, **stats)
 
 
 if __name__ == "__main__":

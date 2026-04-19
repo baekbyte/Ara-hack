@@ -1,52 +1,81 @@
-import ara_sdk as ara
+"""Ara automation entrypoint for Memory Palace.
+
+Local run notes:
+- Start the FastAPI bridge first: `uvicorn server:app --reload`
+- For Ara local development, use `ara run app.py`
+- For deployment, use `ara auth login` then `ara deploy app.py`
+"""
+
+from __future__ import annotations
+
+import os
+from typing import Any
+
 import httpx
 
-MEMORY_PALACE_URL = ara.env("MEMORY_PALACE_URL", default="http://localhost:8000")
+try:  # pragma: no cover - Ara SDK is optional during local backend testing
+    from ara_sdk import Automation, env, secret, tool
+except ImportError:  # pragma: no cover
+    def env(name: str, default: str | None = None) -> str | None:
+        return os.getenv(name, default)
+
+    def secret(name: str, default: str | None = None) -> str | None:
+        return os.getenv(name, default)
+
+    def tool(func):  # type: ignore[no-untyped-def]
+        return func
+
+    class Automation:  # type: ignore[override]
+        def __init__(self, *args: Any, **kwargs: Any) -> None:
+            self.args = args
+            self.kwargs = kwargs
 
 
-@ara.tool
+from prompts import MEMORY_PALACE_SYSTEM_INSTRUCTIONS
+
+
+API_BASE = env("MEMORY_PALACE_API_BASE", "http://localhost:8000") or "http://localhost:8000"
+API_TOKEN = secret("MEMORY_PALACE_API_TOKEN", "dev-token") or "dev-token"
+
+
+def _headers() -> dict[str, str]:
+    return {"X-API-Token": API_TOKEN}
+
+
+@tool
 def query_memory_palace(question: str) -> dict:
-    response = httpx.get(f"{MEMORY_PALACE_URL}/query", params={"q": question})
+    """Retrieve compact personalized context from the Memory Palace graph."""
+    response = httpx.get(
+        f"{API_BASE}/query",
+        params={"q": question},
+        headers=_headers(),
+        timeout=15.0,
+    )
     response.raise_for_status()
     return response.json()
 
 
-@ara.tool
-def web_search(query: str) -> dict:
-    key = ara.secret("TAVILY_API_KEY")
+@tool
+def log_ara_action(action_type: str, content: str, metadata: dict | None = None) -> dict:
+    """Persist Ara's own actions back into the Memory Palace graph."""
     response = httpx.post(
-        "https://api.tavily.com/search",
-        json={"api_key": key, "query": query, "max_results": 5},
+        f"{API_BASE}/webhook/ara/action",
+        json={
+            "action_type": action_type,
+            "content": content,
+            "metadata": metadata or {},
+        },
+        headers=_headers(),
+        timeout=15.0,
     )
     response.raise_for_status()
-    results = response.json()
-    httpx.post(
-        f"{MEMORY_PALACE_URL}/webhook/ara",
-        json={"event_type": "web_search", "input": query, "output": str(results)},
-    )
-    return results
+    return response.json()
 
 
-@ara.tool
-def recall_context(topic: str) -> dict:
-    response = httpx.get(f"{MEMORY_PALACE_URL}/query", params={"q": topic, "k": 10})
-    response.raise_for_status()
-    data = response.json()
-    all_results = data.get("results", [])
-    omi_memories = [r for r in all_results if r.get("source") == "omi"]
-    ara_actions = [r for r in all_results if r.get("source") == "ara"]
-    return {"omi_memories": omi_memories, "ara_actions": ara_actions, "all_results": all_results}
-
-
-ara.Automation(
+memory_palace_agent = Automation(
     "memory-palace-agent",
-    system_instructions=(
-        "You are a personal AI assistant with a memory palace. "
-        "Before answering ANYTHING, call query_memory_palace to check what you already know. "
-        "Every web search you do is automatically logged to your memory palace. "
-        "Use recall_context to retrieve relevant memories before acting. "
-        "Your memory palace contains both your user's real-life conversations (from Omi) "
-        "and your own past actions — use both to give personalized, context-aware answers."
-    ),
-    tools=[query_memory_palace, web_search, recall_context],
+    system_instructions=MEMORY_PALACE_SYSTEM_INSTRUCTIONS,
+    tools=[query_memory_palace, log_ara_action],
+    allow_connector_tools=True,
+    required_env=["MEMORY_PALACE_API_BASE"],
 )
