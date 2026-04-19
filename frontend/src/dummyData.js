@@ -195,8 +195,5 @@ export const DUMMY_DATA = {
     // mentions person
     { id: 'de-24', source: 'd-n18', target: 'd-n2',  edge_type: 'mentions_person', weight: 0.85 },
     { id: 'de-25', source: 'd-n19', target: 'd-n1',  edge_type: 'mentions_person', weight: 0.85 },
-    // causal
-    { id: 'de-26', source: 'd-n12', target: 'd-n13', edge_type: 'causal',          weight: 0.76 },
-    { id: 'de-27', source: 'd-n1',  target: 'd-n16', edge_type: 'causal',          weight: 0.65 },
   ],
 };
