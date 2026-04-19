@@ -139,7 +139,11 @@ async def webhook_ara_action(
     _verify_token(x_api_token)
     payload = model_dump_compat(event)
     _log_webhook("ara_action", payload)
-    node = ingest_ara_event(payload)
+    try:
+        node = ingest_ara_event(payload)
+    except ValueError as e:
+        logger.info("skipped event: %s", e)
+        return IngestResponse(ok=True, node_id=None, reason=str(e))
     write_snapshot_files()
     return IngestResponse(ok=True, node_id=node.id)
 

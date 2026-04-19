@@ -104,7 +104,6 @@ html, body, #root {
   border-radius: 50%;
   background: var(--green);
   box-shadow: 0 0 6px var(--green);
-  animation: pulse 2s ease-in-out infinite;
 }
 
 .status-dot.error {
@@ -179,31 +178,78 @@ html, body, #root {
   width: 100%;
   height: 100%;
   position: relative;
+  background: radial-gradient(ellipse at 50% 42%, #0C1828 0%, #070B14 55%, #040608 100%);
 }
 
-.graph-svg {
-  width: 100%;
-  height: 100%;
+.graph-container canvas {
   display: block;
+  width: 100% !important;
+  height: 100% !important;
   cursor: grab;
 }
 
-.graph-svg:active {
+.graph-container canvas:active {
   cursor: grabbing;
 }
 
-/* D3 node & edge styles injected via JS, but keep fallback selectors */
-.graph-svg .node circle {
-  transition: filter 0.2s;
-}
-
-.graph-svg .node:hover circle {
-  cursor: pointer;
-}
-
-.graph-svg .node text {
+/* ── Always-on node labels (CSS2DRenderer) ── */
+.node-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
   pointer-events: none;
-  user-select: none;
+  transition: opacity 0.2s;
+}
+
+.node-label-type {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.node-label-content {
+  font-size: 10.5px;
+  color: rgba(210, 220, 255, 0.78);
+  background: rgba(6, 10, 20, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 2px 7px;
+  border-radius: 4px;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Hover tooltip ── */
+.node-tooltip {
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(6, 10, 20, 0.90);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 7px;
+  padding: 9px 13px;
+  z-index: 100;
+  max-width: 220px;
+}
+
+.tooltip-type {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.tooltip-content {
+  font-size: 12px;
+  color: rgba(210, 220, 255, 0.80);
+  line-height: 1.45;
 }
 
 /* ── Empty / loading state ── */
@@ -397,20 +443,54 @@ html, body, #root {
   word-break: break-all;
 }
 
+/* ── Controls hint ── */
+.controls-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.18);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 5;
+}
+.hint-sep { opacity: 0.4; }
+
 /* ── Legend ── */
 .legend {
   position: absolute;
   bottom: 16px;
   left: 16px;
-  background: rgba(20, 20, 20, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(8, 8, 16, 0.88);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 10px 14px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   z-index: 5;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.legend-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #555566;
+  margin-top: 2px;
+}
+
+.legend-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
 }
 
 .legend-item {
@@ -422,8 +502,16 @@ html, body, #root {
 }
 
 .legend-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: 0 0 5px currentColor;
+}
+
+.legend-edge {
+  width: 22px;
+  height: 2px;
+  flex-shrink: 0;
+  border-radius: 1px;
 }

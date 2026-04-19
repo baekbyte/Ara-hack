@@ -3,7 +3,8 @@
     "allow": [
       "Bash(pip show *)",
       "Bash(pip3 show *)",
-      "Bash(/Users/nathanbaek/Ara-hack/.venv/bin/pip show *)"
+      "Bash(/Users/nathanbaek/Ara-hack/.venv/bin/pip show *)",
+      "Bash(pip install *)"
     ]
   }
 }

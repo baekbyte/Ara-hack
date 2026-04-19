@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import Graph from './components/Graph.jsx';
+import Graph, { EDGE_CONFIG } from './components/Graph.jsx';
 import NodeDetail from './components/NodeDetail.jsx';
 
 const POLL_INTERVAL = 2000;
@@ -19,11 +19,20 @@ export default function App() {
 
     const fetchGraph = async () => {
       try {
-        const res = await fetch('http://localhost:8000/graph');
+        const res = await fetch('/graph');
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         if (!cancelled) {
-          setGraphData(data);
+          setGraphData(prev => {
+            const newNodes = data.nodes ?? [];
+            const newEdges = data.edges ?? data.links ?? [];
+            const prevIds     = new Set(prev.nodes?.map(n => n.id) ?? []);
+            const prevEdgeLen = (prev.edges ?? prev.links ?? []).length;
+            const same = newNodes.length === prevIds.size &&
+                         newEdges.length === prevEdgeLen &&
+                         newNodes.every(n => prevIds.has(n.id));
+            return same ? prev : { nodes: newNodes, edges: newEdges };
+          });
           setStatus('live');
         }
       } catch {
@@ -50,25 +59,36 @@ export default function App() {
     }
 
     searchTimeout.current = setTimeout(async () => {
+      // Always run client-side filter first so it works offline / with dummy data
+      const lower = q.toLowerCase();
+      const clientIds = new Set(
+        graphData.nodes
+          .filter(n => {
+            const text = [n.content, n.node_type, n.type, n.id,
+              ...(n.metadata ? Object.values(n.metadata).map(String) : []),
+            ].join(' ').toLowerCase();
+            return text.includes(lower);
+          })
+          .map(n => n.id)
+      );
+
+      // Try to enrich with semantic results from the backend
       try {
-        const res = await fetch(`http://localhost:8000/query?q=${encodeURIComponent(q)}`);
+        const res = await fetch(`/query?q=${encodeURIComponent(q)}`);
         if (!res.ok) throw new Error();
         const data = await res.json();
-        // Expect { nodes: [{id, ...}, ...] } or [{id, ...}]
-        const hits = Array.isArray(data) ? data : (data.nodes ?? []);
-        const ids = new Set(hits.map((n) => n.id ?? n));
-        setHighlightIds(ids);
-        setSearchCount(ids.size);
+        // /query returns { results: [{ node: {...}, score }], ... }
+        const backendNodes = Array.isArray(data)   ? data
+          : data.results ? data.results.map(r => r.node ?? r)
+          : (data.nodes  ?? []);
+        const backendIds = new Set(backendNodes.map(n => n.id).filter(Boolean));
+        // Union: show both semantic hits and text matches
+        const merged = new Set([...clientIds, ...backendIds]);
+        setHighlightIds(merged);
+        setSearchCount(merged.size);
       } catch {
-        // Fall back to client-side filter
-        const lower = q.toLowerCase();
-        const ids = new Set(
-          graphData.nodes
-            .filter((n) => (n.content ?? '').toLowerCase().includes(lower))
-            .map((n) => n.id)
-        );
-        setHighlightIds(ids);
-        setSearchCount(ids.size);
+        setHighlightIds(clientIds);
+        setSearchCount(clientIds.size);
       }
     }, 300);
   }, [graphData.nodes]);
@@ -93,7 +113,7 @@ export default function App() {
             <line x1="18.78" y1="3.22" x2="15.95" y2="6.05" stroke="#4A9EFF" strokeWidth="1" />
             <line x1="6.05" y1="15.95" x2="3.22" y2="18.78" stroke="#4A9EFF" strokeWidth="1" />
           </svg>
-          <span className="header-title">Memory Palace</span>
+          <span className="header-title">Memory Galaxy</span>
         </div>
 
         <span className="header-count">
@@ -136,18 +156,49 @@ export default function App() {
 
         {/* Legend */}
         <div className="legend">
-          <div className="legend-item">
-            <span className="legend-dot" style={{ background: '#4A9EFF' }} />
-            omi_memory
-          </div>
-          <div className="legend-item">
-            <span className="legend-dot" style={{ background: '#FF8C42' }} />
-            ara_tool_call
-          </div>
-          <div className="legend-item">
-            <span className="legend-dot" style={{ background: '#52D68A' }} />
-            ara_observation / ara_message
-          </div>
+          <div className="legend-section-title">Nodes</div>
+          {[
+            ['#4A9EFF', 'omi memory'],
+            ['#6AB8FF', 'omi conversation'],
+            ['#FF8C42', 'ara tool call'],
+            ['#52D68A', 'ara message / obs'],
+            ['#FFD166', 'task candidate'],
+            ['#BB66FF', 'derived fact'],
+          ].map(([color, label]) => (
+            <div className="legend-item" key={label}>
+              <span className="legend-dot" style={{ background: color, boxShadow: `0 0 6px ${color}` }} />
+              {label}
+            </div>
+          ))}
+
+          <div className="legend-divider" />
+          <div className="legend-section-title">Edges</div>
+          {Object.entries(EDGE_CONFIG).map(([type, cfg]) => {
+            const hex = '#' + cfg.color.toString(16).padStart(6, '0');
+            return (
+              <div className="legend-item" key={type}>
+                <span
+                  className="legend-edge"
+                  style={{
+                    background: cfg.dashed
+                      ? `repeating-linear-gradient(90deg, ${hex} 0px, ${hex} 5px, transparent 5px, transparent 9px)`
+                      : hex,
+                    opacity: cfg.baseOpacity + 0.2,
+                  }}
+                />
+                {type}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Controls hint */}
+        <div className="controls-hint">
+          <span>Drag to move</span>
+          <span className="hint-sep">·</span>
+          <span>Right drag to orbit</span>
+          <span className="hint-sep">·</span>
+          <span>Scroll to zoom</span>
         </div>
 
         {/* Node detail panel */}
