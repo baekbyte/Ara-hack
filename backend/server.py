@@ -19,15 +19,6 @@ app.add_middleware(
 )
 
 
-@app.api_route("/{path:path}", methods=["GET", "POST", "PUT", "PATCH"])
-async def catch_all(path: str, request: Request):
-    body = await request.body()
-    logger.info(f"INCOMING: {request.method} /{path}")
-    logger.info(f"HEADERS: {dict(request.headers)}")
-    logger.info(f"BODY: {body.decode()}")
-    return {"ok": True}
-
-
 @app.post("/webhook/omi")
 async def omi_webhook(payload: dict):
     node = ingest_omi_memory(payload)
