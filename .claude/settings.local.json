@@ -3,7 +3,11 @@
     "allow": [
       "Bash(pip show *)",
       "Bash(pip3 show *)",
-      "Bash(/Users/nathanbaek/Ara-hack/.venv/bin/pip show *)"
+      "Bash(/Users/nathanbaek/Ara-hack/.venv/bin/pip show *)",
+      "Bash(.venv/bin/pip show *)",
+      "Bash(.venv/bin/pip install *)",
+      "Bash(.venv/bin/python -c \"from ara_sdk.core import runtime; print\\('runtime import ok'\\)\")",
+      "Bash(.venv/bin/ara deploy *)"
     ]
   }
 }
