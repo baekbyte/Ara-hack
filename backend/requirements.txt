@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+networkx
+numpy
+sentence-transformers
+httpx
