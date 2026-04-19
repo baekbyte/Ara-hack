@@ -1,6 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 from graph import get_graph
 from ingest import ingest_ara_event, ingest_omi_memory, semantic_search
@@ -13,6 +17,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.api_route("/{path:path}", methods=["GET", "POST", "PUT", "PATCH"])
+async def catch_all(path: str, request: Request):
+    body = await request.body()
+    logger.info(f"INCOMING: {request.method} /{path}")
+    logger.info(f"HEADERS: {dict(request.headers)}")
+    logger.info(f"BODY: {body.decode()}")
+    return {"ok": True}
 
 
 @app.post("/webhook/omi")
