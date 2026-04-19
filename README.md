@@ -1,4 +1,4 @@
-# GalAIxy (Ara-hack)
+# MemStar (Ara-hack)
 
 A **unified memory graph** that can ingest **real-life memories** (e.g. from [Omi](https://github.com/BasedHardware/omi) via webhook) and **agent activity** (Ara-style events), then visualize and search them in one place.
 
